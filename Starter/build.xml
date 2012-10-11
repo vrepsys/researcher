@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Re-searcher" default="app-linux">
+
+	<property name="src" location="src" />
+	<property name="lib" location="lib" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<property name="linuxfiles" location="linux" />
+	<property name="windowsfiles" location="windows" />
+	<property name="app" location="app" />
+	<property name="researcher" location="${app}/researcher" />
+	
+	<property environment="env"/>	
+
+	<target name="init">
+		<tstamp />
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath>
+				<fileset dir="${lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="init_dist">
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="init_app">
+		<mkdir dir="${researcher}"/>
+		<mkdir dir="${researcher}/lib" />
+		<mkdir dir="${researcher}/db" />
+		<mkdir dir="${researcher}/logs" />
+		<mkdir dir="${researcher}/conf" />
+		<mkdir dir="${researcher}/bin" />
+	</target>
+	
+	<target name="jar" depends="clean_dist,init_dist,compile">
+		<jar jarfile="${dist}/starter.jar" basedir="${build}" />
+	</target>
+
+	<target name="app" depends="clean,init_dist,jar">
+		<copy file="researcher.jar" todir="${researcher}" />
+		<copy file="${dist}/starter.jar" todir="${researcher}/lib"/>		
+		<copy todir="${researcher}/lib">
+			<fileset dir="lib" />
+		</copy>
+		<copy todir="${researcher}/doc">
+			<fileset dir="doc"/>
+		</copy>
+		<copy todir="${researcher}/conf">
+			<fileset dir="conf"/>
+		</copy>		
+		<mkdir dir="${researcher}/db" />
+		<mkdir dir="${researcher}/logs" />
+	</target>
+	
+	<target name="app-linux" depends="app">
+		<copy todir="${researcher}">
+			<fileset dir="${linuxfiles}"/>
+		</copy>
+		<chmod file="${researcher}/bin/researcher" perm="ug+rx"/>
+		<chmod file="${researcher}/bin/wrapper" perm="ug+rx"/>
+	</target>
+	
+	<target name="app-windows" depends="app">		
+		<copy todir="${researcher}">
+			<fileset dir="${windowsfiles}"/>
+		</copy>		
+	</target>
+
+	
+	<target name="clean_dist">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+	
+	<target name="clean_app">
+		<delete dir="${app}" />
+	</target>
+	
+	<target name="clean" depends="clean_dist, clean_app"/>
+	
+	<target name="archive-linux" depends="app-linux">
+		  <tar tarfile="${dist}/researcher.tar"
+		  	   basedir="${app}" />
+		  <gzip zipfile="${dist}/researcher-linux.tar.gz"
+		  	    src="${dist}/researcher.tar"/>
+		  <delete file="${dist}/researcher.tar"/>
+	</target>
+	
+	<target name="archive-windows" depends="app-windows">
+		  <zip zipfile="${dist}/researcher-windows.zip" basedir="${app}"/>
+	</target>
+
+	<target name="distcopy" depends="jar">
+		<copy file="${dist}/starter.jar" todir="/home/posu/projects/Starter/app/researcher/lib" />		
+	</target>
+
+</project>

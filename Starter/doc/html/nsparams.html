@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>New Sequence Parameters Help</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+
+	<table cellspacing="0" border="0" style="margin-left: auto; margin-right: auto; width: 100%;">
+	<tr>
+	<td style="width: 199px;"> &nbsp; </td>
+	<td style="background-color: #0A2D43;width:70px;padding-left:20px;"> 
+		<img src="logo.png" width="50" height="99" border="0" alt=""> 
+	</td>
+	<td style="width: 10em;text-align: center;padding: 20px; padding-left: 0px; background-color: #0A2D43;"> 	
+		<a class="researcherMainLink" href="http://researcher.sf.net">Re-searcher</a>
+		<span class="mainSmall"> developed at </span> <br/> <a href="http://www.ibt.lt/bioinformatics/" class="ibtMainLink">Institute of Biotechnology,<br/>Vilnius, Lithuania</a>
+	</td>
+	<td style="padding: 14px;background-color: #0A2D43;vertical-align: bottom;">
+		<span class="menuitem"><a class="menulink" href="readme.html">Home</a></span>
+		<span class="menuitem"><a class="menulink" href="documentation.html">Documentation</a></span>
+		<span class="menuitem"><a class="menulink" href="http://sourceforge.net/project/showfiles.php?group_id=173135">Downloads</a></span>
+	</td>
+	<td style="width: 199px;"> &nbsp; </td>
+	</table>
+
+<div class="container">
+
+
+
+<p class="navText"><strong>New Sequence Parameters</strong></p>
+
+<p class="navText"><strong>Contents</strong></p>
+
+<ol>
+<li class="navText"><a href="#searchLocationHelp">Perform search at</a></li>
+<li class="navText"><a href="#periodHelp">Search period (days)</a></li>
+<li class="navText"><a href="#notifyByMailHelp">Notify by mail on new hits</a></li>
+<li class="navText"><a href="#maxNumberOfHitsHelp">Maximum number of hits</a></li>
+<li class="navText"><a href="#sequenceNameHelp">Sequence Name</a></li>
+<li class="navText"><a href="#sequenceHelp">Sequence (plain text)</a></li>
+<li class="navText"><a href="#secondaryDatabaseHelp">Primary/Secondary Database Search</a></li>
+<li class="navText"><a href="#databaseHelp">Database</a></li>
+<li class="navText"><a href="#compositionalAdjustmentsHelp">Compositional adjustments</a></li>
+<li class="navText"><a href="#filtersHelp">Filters</a></li>
+<li class="navText"><a href="#eValueHelp">Expectation value</a></li>
+<li class="navText"><a href="#iterationsHelp">Maximum number of iterations</a></li>
+<li class="navText"><a href="#eValueMultipassHelp">Inclusion threshold for multiple iterations</a></li>
+<li class="navText"><a href="#wordSizeHelp">Word size</a></li>
+<li class="navText"><a href="#matrixHelp">Matrix</a></li>
+<li class="navText"><a href="#costsHelp">Cost to open/extend a gap</a></li>
+<li class="navText"><a href="#commandLineOptionsHelp">Additional Command Line Options</a></li>
+<li class="navText"><a href="#restartFileHelp">Input Alignment File for PSI-BLAST Restart (for LOCAL SERVER searches only)</a></li>
+<li class="navText"><a href="#pssmHelp">PSSM (for NCBI searches only)</a></li>
+<li class="navText"><a href="#phiPatternHelp">PHI pattern (for NCBI searches only)</a></li>
+<li class="navText"><a href="#buttonsHelp">Buttons</a></li>
+</ol>
+
+
+<div class="help_file">
+<span class="title"><a name="searchLocationHelp"></a>1. Perform search at</span>
+
+<p class="text">You can choose whether to perform a remote search at NCBI (http://www.ncbi.nlm.nih.gov/BLAST/) or a search using a local PSI-BLAST server if it is available and is configured. Depending on the choice some options for the PSI-BLAST search will differ. </p>
+
+<span class="title"><a name="periodHelp"></a>2. Search period (days)</span>
+
+<p class="text">Search period defines how often (after how many days) the search will be repeated.</p>
+
+<span class="title"><a name="notifyByMailHelp"></a>3. Notify by mail on new hits</span>
+
+<p class="text">If this option is enabled you will get an e-mail notification every time new hits are found for your sequence. For this option to be functional e-mail options have to be configured by the administrator.</p>
+
+<span class="title"><a name="maxNumberOfHitsHelp"></a>4. Maximum number of hits</span>
+
+<p class="text"> This parameter sets the maximum hits for a single PSI-BLAST search. For local searches: the value of parameters -v and -b. For NCBI searches: the value of 'Max target sequences'. </p>
+
+<span class="title"><a name="sequenceNameHelp"></a>5. Sequence Name</span>
+
+<p class="text">The name of the sequence displayed in the sequence list, for instance, “My sequence” or “anything else”. This field has no effect on the search results and is for your reference only. </p>
+
+<span class="title"><a name="sequenceHelp"></a>6. Sequence (plain text)</span>
+
+<p class="text">Protein sequence itself in a one letter code, for instance:<br/>
+<span style="font-size:12px">
+MALGMTDLFIPSANLTGISSAESLKISQAVHGAFMELSEDGIEMAGSTGVIEDIKHSPESEQFRADHPFLFLIKHNPTNTIVYFGRYWSP
+</span>
+</p>
+
+<span class="title"><a name="secondaryDatabaseHelp"></a>7. Primary/Secondary Database Search</span>
+
+<p class="text">Re-searcher is able to perform both single and double searches. If you are only interested in searches against a single specified database, just set the PSI-BLAST search parameters in the “Primary Database Search” section. If, however, you would like to run the last iteration against the second sequence database using the Position Specific Score Matrix (PSSM) generated during search against the first one, you will need to set up the “Secondary Database Search” as well. </p>
+
+<span class="title"><a name="databaseHelp"></a>8. Database</span>
+
+<p class="text">If you are performing a single search, select the desired protein sequence database only in the “Primary Database Search” section. To perform a double search you must also choose a database in the “Secondary Database Search” section. If the search is to be performed at NCBI, you can choose from the available remote databases. In the case of local search, any local protein sequence database formatted for BLAST searches can be selected provided it is included in the list by the administrator.</p> 
+
+<span class="title"><a name="compositionalAdjustmentsHelp"></a>9. Compositional adjustments</span>
+
+<p class="text">This parameter is used to compensate for the amino acid compositions of the sequences being compared. The simplest adjustment is to scale all substitution scores by an analytically determined constant, while leaving the gap scores fixed; this procedure is called "composition-based statistics" (Schaffer et al., 2001).</p> <p class="text"> The resulting scaled scores yield more accurate E-values than standard, unscaled scores. A more sophisticated approach adjusts each score in a standard substitution matrix separately to compensate for the compositions of the two sequences being compared (Yu et al., 2003; Yu and Altschul, 2005; Altschul et al., 2005). Such "compositional score matrix adjustment" may be invoked only under certain specific conditions for which it has been empirically determined to be beneficial (Altschul et al., 2005); under all other conditions, composition-based statistics are used. Alternatively, compositional adjustment may be invoked universally.</p>
+
+<span class="title"><a name="filtersHelp"></a>10. Filters</span>
+<p class="text">
+<p><span style="font-weight: bold">Low-complexity:</span> This function mask off segments of the query sequence that have low compositional complexity, as determined by the SEG program of Wootton and Federhen (Computers and Chemistry, 1993).</p>
+
+<p><span style="font-weight: bold">Mask for lookup table only:</span> This option masks only for purposes of constructing the lookup table used by BLAST so that no hits are found based upon low-complexity sequence. The BLAST extensions are performed without masking and so they can be extended through low-complexity sequence. </p>
+</p>
+<span class="title"><a name="eValueHelp"></a>11. Expectation value</span>
+
+<p class="text">This parameter specifies the statistical significance threshold for reporting matches against database sequences. The default value (0.002) is stringent in order to minimize the chance of including unrelated matches. </p>
+
+<span class="title"><a name="iterationsHelp"></a>12. Maximum number of iterations</span>
+
+<p class="text">The number of PSI-BLAST iterations to be performed while searching against the “Primary Database” unless the search converges (no new matches are detected) before this number is reached.</p>
+
+<span class="title"><a name="eValueMultipassHelp"></a>13. Inclusion threshold for multiple iterations</span>
+
+<p class="text">The expectation value (E-value) threshold for including sequences in the score matrix model during multiple PSI-BLAST iterations.</p> 
+
+<span class="title"><a name="wordSizeHelp"></a>14. Word size</span>
+
+<p class="text">BLAST is a heuristic that works by finding word-matches between the query and database sequences. The word-size parameter (usually either 2 or 3) regulates the sensitivity and speed of the search.</p>
+
+<span class="title"><a name="matrixHelp"></a>15. Matrix</span>
+
+<p class="text">The substitution matrix assigns a score for aligning any possible pair of residues. Both BLOSUM and PAM series are available. </p>
+
+<span class="title"><a name="costsHelp"></a>16. Cost to open/extend a gap</span>
+
+<p class="text">These two parameters set the penalty for inserting/extending the gap in the alignment.</p>
+
+<span class="title"><a name="commandLineOptionsHelp"></a>17. Additional Command Line Options</span>
+
+<p class="text">Here additional PSI-BLAST options can be specified.</p>  <p class="text"><b>For a local search</b> these options will just be appended to the blastpgp command string. </p>  <p class="text"><b>For the search at NCBI</b> the following options are supported: -q : Penalty for nucleotide mismatch, -r Reward for nucleotide match, -y Dropoff (X) for blast extentions (in bits), -X Dropoff value for gapped alignment (in bits), -Z final X dropoff value for gapped alignment (in bits).</p>
+
+<span class="title"><a name="restartFileHelp"></a>18. Input Alignment File for PSI-BLAST Restart (for LOCAL SERVER searches only)</span>
+
+<p class="text">This option (corresponds to the -B flag in the PSI-BLAST command line) provides a way to jump start PSI-BLAST from a file that contains a master-slave multiple alignment computed outside PSI-BLAST. The multiple alignment file must include the query sequence as one of the sequences, but it does not have to be the first sequence. The multiple alignment must be in a format that is derived from Clustal, but without headers and trailers. The example that includes the query sequence “enigma_cterm” and the corresponding alignment “enigma_cterm_align” is provided below:<br/><br/>
+
+<pre>
+enigma_cterm
+-------------
+IDKNALGDEGENLVLEYEKERVKLFDPSLVRKVVHLGKTKGLGYDIQSVVAEDGDFAEFV
+KYIEVKSTKRVTVPNLDDPSWIDTINLTRNEWIAATQHKSSYYLYRVYFTPGLATMYVIN
+DPFTKNKDDILRAKPVSYRLDFSNKAVDFMVTEEKEEYR
+
+enigma_cterm_align
+-------------
+gi|67593687/262_391/    N----CPKKIILEIGKMGEKLAFDSLKEKFSNELGID-YF----NITWVNETAESGLPYD
+gi|68422859/1833_1951/  D---------AASIGQWGEQLVFSFLQHWHRSGSGPS-------EITWFNQSGESGRACD
+gi|92898541/383_509/    E---------AKAIGFKGEAFAYGYYHDRFEDTY----------AVVLMNQGEESGLSYD
+gi|49243399/283_427/    E---------NKLTGKVGEKLALKYFNDLIDNKIDED-KKEQFRNILNDNPGSQHGHGYD
+gi|83375500/152_277/    R---------NRALGRAGEERVLAHERASLKSAGCDD-LA---RKVRWVSEEDGDGAGYD
+gi|77742621/158_280/    ----------NRDLGKAGEEFVVGFERRRLERAGRDD-LA---REVRWVSDLDGDGYGYD
+gi|84713009/151_276/    Q---------NSSLGLAGEEFVVQFEHWRLVGMGQHR-LA---DRVEHVSVSKGDGLGYD
+gi|88706080/278_403/    ----------NRRLGERGEEFALEYERYRLGASLRAD-LA---DRVEWSSKVLGDGLGFD
+gi|89900005/266_390/    ----------NRKLGRTGEQWVLGFEQQRLQEAGMPE-LF---QRVDWISDRLGDGAGYD
+gi|44921080/268_393/    -----------KKLGSSGEKLVYDYEVSFLNENGCPN-LA---KNVKHVSEEDGDGAGYD
+gi|23023290/260_387/    Q---------NSMIGFLGEEIVLKYEKNILSN--VPD-LS---QRIEHVSQTKGDGLGYD
+gi|68263911/287_416/    R---------QKKIGLLAEEAVIDYERQKLRLANRND-LA---QKIVHESTEHGDGAGYD
+gi|73660904/125_253/    R---------NNEIGDQGEEFVMEYEKDRLTELLSMD-AT---QYVQHLSRLQGDGLGYD
+gi|62463611/221_341/    K----------QKTGALGEEIVLDFLIQKAEK----N-KT---KLPEHVSKTEGDGHGYD
+gi|47091440/272_407/    I--------RNTEKGLQGEYLVINYERERLMKNTITKSYA---DKITHVSE-SGDGHGYD
+gi|52215393/248_367/    R---------LAQIGLKGELFIMDSEKNKLKQAGITD--T---YYPKHVAL-ESMSSGYD
+gi|106886733/184_315/   E---------DAKIGELAEQFVINYERIRLNNCSQY--------PIKQISVVDVNA-GYD
+gi|69936712/145_249/    GYARLLTDHEKMEQGRAAEILSLEHERKRLKEVGID--------LEPEWPGFDDNFAGYD
+enigma_cterm            I--------DKNALGDEGENLVLEYEKERVKLFD-PS-LV---RKVVHLG--KTKGLGYD
+gi|16421301/262_394/    D--------NRDLIGKKSEEYALNWEKNRLIGLGYSK-LA---EEIDDRR--NRPTYGYD
+
+gi|67593687/262_391/    IILVFMDKTRGTKE------E-IFVEVKSSSKK---E-KN-F-----FRISFNEWKLAE-
+gi|68422859/1833_1951/  FKLSF------SDQ------E-ILVEVKTTVRR---D-RH-F-----IRMSANELDLAL-
+gi|92898541/383_509/    IGLCDKTKVQSKES------D-SFIEVKSISKK---N-MD-W-----FFMSKNEFELGL-
+gi|49243399/283_427/    LVAFDPTNT-DEAI------E-KFIEIKTSISS---NIEE-P-----FFMSLNEMFALK-
+gi|83375500/152_277/    IASFAPDG-----R-------PRLIEVKTTNGW---E-RT-P-----FHISRNELAVAE-
+gi|77742621/158_280/    VKSFETDG-----Q-------QRLLEIKTTCGN---E-RT-P-----FWMTRRECDVAA-
+gi|84713009/151_276/    VLSFESDG-----R-------ERLIEVKTTTFG---R-DT-P-----FFVSRGELALSQ-
+gi|88706080/278_403/    IRSFDSET-----E------NERFIEVKTTNSG---K-YL-P-----FFVSANELTFSQ-
+gi|89900005/266_390/    ILSYDSSD-----Q-------ARYIEVKTTNGA---H-TS-A-----FIISRNELDFSQ-
+gi|44921080/268_393/    ILSYDLKG-----N-------EKYIEVKTTKNG---K-NT-P-----FIVSRNELEFSK-
+gi|23023290/260_387/    ILSFDSQG-----N------E-IFIEVKTTTQG---K-NT-P-----FYMTSNEVNFAN-
+gi|68263911/287_416/    ILSFTEEG-----E------K-LFIEVKATTGS---I-RE-S-----FFLSKNEVQFSG-
+gi|73660904/125_253/    ISSINEDG-----S------T-RLIEVKTTSGG---F-NT-P-----FYMSKNEKHFFE-
+gi|62463611/221_341/    IRAFDQSG-----N------E-IHIEVKASKTN---F-SD-G-----FEMSTNEVASSL-
+gi|47091440/272_407/    IISYDINP-----DASNEVIE-IYIEVKTTTGN---R-DA-P-----FYLSDNELNVAR-
+gi|52215393/248_367/    VASIDENG-----N------K-IFIEVKTTTRR---K-ED-I-NSKIFFISSNEFETYL-
+gi|106886733/184_315/   IASFKSEK--SLSY------D-RFIEVKAVNIK---C----E-----FYWSKAEIEAAR-
+gi|69936712/145_249/    VLSYDHGN--AGIV------N-RLIEVKFTTIS---P-L--R-----FIVTRNEWNKAV-
+enigma_cterm            IQSVVAED-----GDFA-EFV-KYIEVKSTKRVTVPN-LDDPSWIDTINLTRNEWIAAT-
+gi|16421301/262_394/    FLSFNAPG-----D------E-RYIEVKSIGRD---G-KEGAFR---FFLSGNELTVSNL
+
+gi|67593687/262_391/    -RLQNNYWLFHILGVNLNA--PNLSL-ND-IEFRIIRNPYESWKDGR-LKMIL----S--
+gi|68422859/1833_1951/  -KEKERYHIYRVYGAG-DA--QHVRL-CR-IR-----NLAQHLHSKS-LEL---------
+gi|92898541/383_509/    -DKKKDYIIAHIYIDE-KQ--KDAKL-KYRVT-----EYSNPASEESELELYM----T--
+gi|49243399/283_427/    -EYKKKYLILRIFNVSGEE--PQFYF-IDPYA-----NYSEFKDVDDLIDKVF----NVE
+gi|83375500/152_277/    -ERRSEWSLFRLWNFA-----REPKA-FE-LH-----PP---L------DAHV----TLT
+gi|77742621/158_280/    -EQGDMYRIRRVFHFR-----NEVKM-FD-IV-----PP---L------DAAL----RLT
+gi|84713009/151_276/    -GAKDQFHLYRLFEFR-----KSPRL-FD-LP-----GS---L------DQHC----LLD
+gi|88706080/278_403/    -ERSAEYALYRVFDFS-----ANARL-FE-LK-----GA---I------DRHV----HLE
+gi|89900005/266_390/    -ETGDAFHLYRVFQFR-----TTPLL-YM-LR-----GD---V------SKQL----NLE
+gi|44921080/268_393/    -EYGDKYYIYRVYEFNPKN--KSGKF-YV-VN-----GP---I------DQEF----NLE
+gi|23023290/260_387/    -KHPDNYFLYRVYNFGNLVEMNNIEF-FK-IA-----GS---Q------MKNI----DLQ
+gi|68263911/287_416/    -ENAGNYALYRVYNLSAQR--EAWGL-YI-LY-----GD---I------RDSV----ELM
+gi|73660904/125_253/    -EYANNAYIYRVYDFNRET--RHGKV-KI-IN-----QSE--L------FTDF----NFD
+gi|62463611/221_341/    -EDTS-YKIYFVHDLDVTS--KVCKI-KI-YD-----GP---FT-----EENF----MMV
+gi|47091440/272_407/    -IKGELYKIYRVYDYNTAP-----KL-KI-ID-----NL---F------DETL----EIK
+gi|52215393/248_367/    -KNKKNYKLYRVYDIENNP-----SY------------------------EEI----DLE
+gi|106886733/184_315/   -IMQDAYYLYLVEVAKMKY--SNYIP-KI-IQ-----NP---FKNVFK-SEQW----LLE
+gi|69936712/145_249/    -QAAEAYV-FHIWDMNQAA--PVLHI-RT-VA-----------------EVAP----HIP
+enigma_cterm            -QHKSSYYLYRVYFTP-G---LATM--YV-IN-----DP---F------TKNKDDILRAK
+gi|16421301/262_394/    SNHSKNYYFYLVQYGK-DG--EPCNLYVK-HA-----QD---L------YTNS----EMS
+
+gi|67593687/262_391/    ----EN-------------------
+gi|68422859/1833_1951/  -------------------------
+gi|92898541/383_509/    -------------------------
+gi|49243399/283_427/    AIQYKV-------------------
+gi|83375500/152_277/    ATSFQASF-----------------
+gi|77742621/158_280/    PTAFMA-------------------
+gi|84713009/151_276/    PVTYRASF-----------------
+gi|88706080/278_403/    PTVFRARF-----------------
+gi|89900005/266_390/    PIDFRASF-----------------
+gi|44921080/268_393/    PKEYYVK------------------
+gi|23023290/260_387/    PVSFMAS------------------
+gi|68263911/287_416/    PTTYKAHGA----------------
+gi|73660904/125_253/    PVTWQVT------------------
+gi|62463611/221_341/    PTNYK--------------------
+gi|47091440/272_407/    PINYIVKGVNQ--------------
+gi|52215393/248_367/    IVNKRPDG-----------------
+gi|106886733/184_315/   PQSYKVTYAN---------------
+gi|69936712/145_249/    TDSGRGTWTNTQVPVFTNF------
+enigma_cterm            PVSYRLDFSNKAVDFMVTEEKEEYR
+gi|16421301/262_394/    PCAYVVRF-----------------
+</pre>
+</p>
+<span class="title"><aname="pssmHelp"></a>19. PSSM (for NCBI searches only)</span>
+
+<p class="text">PSI-BLAST can save the Position Specific Score Matrix (PSSM) constructed through iterations. The PSSM thus constructed can be used in searches against other databases with the same query by copying and pasting the encoded text into the PSSM field.</p>
+
+<span class="title"><a name="phiPatternHelp"></a>20. PHI pattern (for NCBI searches only)</span>
+
+<p class="text">Regular expression pattern for the Pattern-Hit Initiated BLAST search. The pattern is defined in the PROSITE format (http://www.expasy.ch/prosite/) and is used as a seed for the alignment.</p> 
+
+<span class="title"><a name="buttonsHelp"></a>21. Buttons</span>
+<p class="text">
+<span style="font-weight: bold">Add and Stay</span> adds the query to the list of Re-searcher’s sequences and keeps the “New sequence” form with current settings.
+</p>
+
+<p class="text">
+<span style="font-weight: bold">Add and Return</span> adds the query to the list of Re-searcher’s sequences and brings the user to the “Sequence list” window.
+</p>
+
+<p class="text">
+<span style="font-weight: bold">Reset Forms</span> resets the forms to the values of the last page refresh. For instance, if you press "Reset Forms" after following the link "Create a New Query Using These Options" forms will be reseted to the values of the template query. To reset the forms fully press "New Sequence" menu item.
+</p>
+</p>
+</div>
+</body>
+</html>
+

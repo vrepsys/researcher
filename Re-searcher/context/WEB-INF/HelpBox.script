@@ -1,0 +1,88 @@
+<!DOCTYPE script PUBLIC
+  "-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Script_3_0.dtd">
+<script>
+  <body>
+  	<unique>
+		/*
+		 * ijungia (parodo) pagalbos skydeli
+		 */
+		function helpOn(obj, width, height, left, top, txt, event){
+		
+		  hlp = document.getElementById('help_msg');
+		  hlp.innerHTML = txt;
+          setMousePosition(event);
+          x = posx;
+          y = posy;
+		  x += 20;
+		  x += left;
+		  y -= 20;
+		  y += top;
+		  x += 'px';
+		  y += 'px';
+		  if (hlp.style.setProperty){
+		    hlp.style.setProperty("left", x, "");
+		    hlp.style.setProperty("top", y, "");	
+		    hlp.style.setProperty("display", "block", "");
+		    hlp.style.setProperty("width", width, "");
+		    hlp.style.setProperty("height", height, "");
+		  }
+		  else {
+		    hlp.style.top= y;
+			hlp.style.left= x;
+		    hlp.style.width= width;
+			hlp.style.height= height;
+		    hlp.style.display='block';
+			  
+		  }
+		
+		}
+		
+		/*
+		 * paslepia pagalbos skydeli
+		 */
+		function helpOff(){
+			hlp = document.getElementById('help_msg');
+		  if (hlp.style.setProperty){	
+		    hlp.style.setProperty("display", "none", "");
+		  }
+		  else {
+			  hlp.style.display='none';
+		  }
+		}
+		
+		var posx = 0;
+		var posy = 0;
+		
+		function setMousePosition(e) {
+			if (!e) var e = window.event;
+			if (e.pageX || e.pageY) {
+			posx = e.pageX;
+			posy = e.pageY;
+			}
+			else if (e.clientX || e.clientY) {
+			posx = e.clientX + document.body.scrollLeft
+			+ document.documentElement.scrollLeft;
+			posy = e.clientY + document.body.scrollTop
+			+ document.documentElement.scrollTop;
+			}
+			// posx and posy contain the mouse position relative to the document
+			// Do something with this information
+		}
+
+	</unique>
+  </body>
+  <initialization>
+   	<unique>
+		  var newdiv = document.createElement('div');
+		  newdiv.setAttribute('id','help_msg');
+		  newdiv.setAttribute('class', 'help_msg');
+		  newdiv.setAttribute('className', 'help_msg');
+		  newdiv.setAttribute('style', 'display: none;');
+		  if (newdiv.style.display) {
+		    newdiv.style.display='none';  
+		  }   
+		  document.body.appendChild(newdiv);  
+   	</unique>		  
+  </initialization>
+</script>

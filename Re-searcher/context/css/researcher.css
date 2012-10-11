@@ -1,0 +1,323 @@
+.info-box{
+	  background-color: #c4dbef;
+    font-size: 1em;
+    font-weight: bold;
+	  border: dotted 1px #999999;
+    margin-left: auto;
+    margin-right: auto;
+   	padding: 10px;
+}
+
+body  
+{
+  font-weight : normal;
+  font-family: verdana, arial, helvetica;
+}
+
+a.researcherMainLink
+{
+	font-family: arial; 
+	font-style: italic; 
+	font-variant: small-caps; 
+	font-weight: 900;
+	font-size: 32px; 
+	line-height: normal; 
+	font-size-adjust: none; 
+	font-stretch: normal; 
+	color: white; 
+	text-decoration: none;
+	white-space:nowrap;
+}
+
+a.researcherMainLink:hover
+{
+   text-decoration: underline;   
+}
+
+
+
+a.ibtMainLink
+{
+	font-family: arial; 
+	font-style: italic; 
+	font-variant: small-caps; 
+	font-weight: normal;
+	font-size: 12px; 
+	line-height: normal; 
+	font-size-adjust: none; 
+	font-stretch: normal; 
+	color: white; 
+	text-decoration: none;
+	white-space:nowrap;
+}
+
+a.ibtMainLink:hover
+{
+   text-decoration: underline;   
+}
+
+
+a.newUserLink
+{
+	font-family: arial;
+	font-weight: normal;
+	font-size: 12px; 
+	line-height: normal; 
+	font-size-adjust: none; 
+	font-stretch: normal; 
+	text-decoration: none;
+	white-space:nowrap;
+}
+
+a.newUserLink:hover
+{
+   text-decoration: underline;   
+}
+
+.mainSmall {
+	font-family: arial; 
+	font-style: italic; 
+	font-variant: small-caps; 
+	font-weight: normal;
+	font-size: 12px; 
+	line-height: normal; 
+	font-size-adjust: none; 
+	font-stretch: normal; 
+	color: white; 
+}
+
+table.data_table th a
+{
+   color: black;
+   background-color: #c4dbef;
+   font-size: 1em;
+   font-weight: bold;
+   text-decoration: none;   
+}
+
+table.data_table td a
+{
+   text-decoration: none;   
+}
+
+table.data_table td a:hover
+{
+   text-decoration: underline;   
+}
+
+table.data_table th td
+{
+   border: thin solid #c4dbef;  
+   background-color: #c4dbef;
+   font-weight: bold;   
+}
+
+
+table.data_table {
+   border: 0;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.data_table th {
+   background-color: #c4dbef;
+   border-bottom: 1px solid rgb(226, 226, 226);
+   padding-left: 5px;
+   font-weight: bold;
+}
+
+.data_table tr td {
+   font-size: small;
+   border-bottom: 1px solid rgb(226, 226, 226);
+   padding-left: 5px;
+}
+
+.new_results {
+   background-color: #ffd6d4;
+}
+
+.login_cell { 
+   border: 1px solid rgb(226, 226, 226);
+   background-color: #5588AA;
+}
+
+
+.text-input { 
+   border: 1px solid rgb(226, 226, 226);
+}
+
+.select-box { 
+   
+}
+
+.button{
+   background-color: rgb(10, 45, 67);
+   border: 1px solid #0A2D43;
+   color: white;
+   font-weight: bold;
+   padding: 10px;
+}
+
+.nav {	
+	margin-left: 20px;
+	padding: 0;
+    border: 1px solid #bbc1bb;
+	width: 10em;
+	text-align: center;
+}
+
+a.navlink{
+	margin: 0;
+	display: block;
+	color: black;
+	text-decoration: none;
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	font-family: Verdana, Arial, Sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 10px 0px 10px 0px;
+}
+
+a.navlink:hover{
+
+}
+
+a.navlinkActive{
+	margin: 0;
+	display: block;
+	color: black;
+	text-decoration: none;
+	height: 100%;
+	width: 100%;
+	background-color: #cbdeea;
+	font-family: Verdana, Arial, Sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 10px 0px 10px 0px;
+}
+
+.form-box{
+	background-color: #c4dbef;
+    font-size: 0.8em;
+	border: dotted 1px #999999;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-box td.title{
+    font-weight: bold;
+}
+
+.form-box td.newseq_window_title{
+    font-weight: bold;
+    width: 200px;
+}
+
+.error-text{
+    color: red;
+}
+.error-box{
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ffe6e6;
+    color: red;
+    font-size: 1em;
+	border: dotted 1px #999999;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.form-box td {
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.EnterDateColumnValue{
+	text-align: center;
+}
+
+.LastSearchDateColumnValue{
+	text-align: center;
+}
+
+.RecentHitsDateColumnValue{
+	text-align: center;
+}
+
+.PeriodColumnValue{
+	text-align: center;
+}
+
+.DeleteColumnValue{
+	text-align: center;
+}
+
+.HitsColumnValue{
+	text-align: center;
+}
+
+.QueryDetailsColumnValue{
+	text-align: left;
+}
+
+.DeleteColumnHeader{
+	text-align: center;
+}
+
+.new_results {
+   background-color: #ffd6d4;
+}
+
+
+.question{
+  border: none;
+	position: relative;
+	z-index: 0;
+  font-weight: bold;
+  text-decoration: none;
+	cursor: pointer;
+  vertical-align: middle;
+  padding:0;
+  margin:auto;
+}
+
+.question:hover{
+	text-decoration: underline;
+	color: white;
+}
+
+/* For IE , who shows blue link border around images */
+.question img {
+	border: none;
+}
+
+.question:hover{
+  border: none;
+	text-decoration: underline;
+}
+
+.help_msg{
+	display: none;
+	text-decoration: none;
+	white-space: normal;
+	display:block;
+	position: absolute;
+	padding: 2px 5px 2px 5px;
+	border: dashed 1px #AAAAAA;
+  background-color: #bbddbb; 
+  color:#000;
+  width:15em;
+  z-index: 10;
+  font-weight : normal;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 0.8em;
+}
+.help_click{
+  font-size: 11px;
+  font-style: italic;
+}

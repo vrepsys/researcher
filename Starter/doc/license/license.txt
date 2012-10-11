@@ -1,0 +1,1 @@
+Re-searcher is licensed under GNU GPL license (license-gpl.txt) except Java Service Wrapper is licensed under it's own license (license-wrapper.txt).

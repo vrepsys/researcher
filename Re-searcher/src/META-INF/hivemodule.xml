@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<module id="researcher" version="1.0.0">
+
+  <contribution configuration-id="tapestry.state.ApplicationObjects">
+   <state-object name="user" scope="session">
+       <create-instance class="researcher.beans.User"/>
+   </state-object>
+   <state-object name="visit" scope="session">
+       <create-instance class="researcher.web.components.Visit"/>
+   </state-object>
+  </contribution>
+  
+  <implementation service-id="tapestry.services.Direct">
+		Override DirectService to put the triggered Action in transaction brackets.
+		<invoke-factory>
+		  <construct class="researcher.db.service.TransactionalDirectService">
+			<service>honey.ResearcherPersistenceService</service>
+			<set-object property="responseRenderer" value="infrastructure:responseRenderer"/>
+			<set-object property="request" value="infrastructure:request"/>
+			<set-object property="linkFactory" value="infrastructure:linkFactory"/>        
+			<set-object property="requestCycle" value="infrastructure:requestCycle"/>
+		  </construct>
+		</invoke-factory>
+	</implementation>  
+
+  <sub-module descriptor="honeymodule.xml" />
+     
+</module>

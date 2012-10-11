@@ -1,0 +1,393 @@
+<span jwcid="@Border">
+
+<span jwcid="@If" condition="ognl:query.blastErrors != null">
+	<table>
+	<tr>
+	<td>
+		<div> <span jwcid="@Insert" value="message:stopped"/> </div>
+		<div class="error-box" > 
+			<pre>
+				<span jwcid="@Insert" value="ognl:query.blastErrors"/>
+			</pre> 
+		</div> 
+	</td>
+	</tr>
+	</table>
+</span>	
+<table style="margin-left: auto; margin-right: auto;">
+	<tr>
+	<td style="vertical-align: top;">		
+	
+		<!-- QUERY OPTIONS & SEARCH LOCATION -->
+		<table style="margin-left: 0px; width: 100%">
+		<tr>
+		<td>
+			<span jwcid="@Insert" value="message:queryInfo"/>
+			<table class="form-box" style="margin-left: 0px;">
+				<tr>
+					<td class="title"> <span jwcid="@Insert" value="message:queryDesc"/> </td>
+					<td> <span jwcid="@Insert" value="ognl:query.shortDetails"/> </td>
+ 				</tr>
+				<tr>
+					<td class="title"> <span jwcid="@Insert" value="message:lastSearchDate"/> </td>
+					<td> <span jwcid="@Insert" value="ognl:@researcher.utils.Formatter@formatDate(query.lastSearchDate)"/> </td>
+				</tr>
+				<tr>
+					<td class="title"> <span jwcid="@Insert" value="message:recentHitsDate"/> </td>
+					<td> <span jwcid="@Insert" value="ognl:@researcher.utils.Formatter@formatDate(query.recentHitsDate)"/> </td>
+				</tr>
+				<tr>
+					<td class="title"> <span jwcid="@Insert" value="message:hits"/> </td>
+					<td> <span jwcid="@Insert" value="ognl:query.numberOfHits"/> </td>
+				</tr>
+				<tr>
+					<td class="title"> <span jwcid="@Insert" value="message:newHits"/> </td>
+					<td> <span jwcid="@Insert" value="ognl:query.numberOfNewHits"/> </td>
+				</tr>								
+				<tr>
+					<td colspan="2"> <span jwcid="@DirectLink" listener="listener:onClickNewSequence"> <span jwcid="@Insert" value="message:newSequenceSameParam"/> </span> </td>
+				</tr>
+			</table>
+	</td>
+	</tr>
+	<tr>
+	<td> 
+	
+	
+		<!-- PERIOD & EMAIL NOTIFICATION FORMS -->
+		<table class="form-box" style="margin-left: 0px; width: 100%">
+			<tr>
+				<td class="newseq_window_title" >
+					<span jwcid="@Insert" 
+					      value="message:period"/>
+				</td>
+				<td>
+					<span jwcid="period@Insert"
+        				   value="ognl:query.period" />
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" value="message:notifyByMail"/>
+				</td>
+				<td>
+					<span jwcid="notifyByMail@Insert" 
+						   value="ognl:query.notifyByMail" />
+				</td>				
+			</tr>
+			<tr>
+				<td class="newseq_window_title" >
+					<span jwcid="@Insert" 
+					      value="message:maxNumberOfHits"/>
+				</td>
+				<td>
+					<span jwcid="@Insert"
+        				   value="ognl:query.maxNumberOfHits" />
+				</td>			
+			</tr>
+		</table>
+	
+	</td>
+	</tr>	
+
+	<tr>
+	<td>	
+	
+	
+		<!-- SEQUENCE NAME & SEQUENCE FORMS -->
+		<table class="form-box" style="margin-left: 0px; width: 100%;">
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" value="message:sequenceName"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" 
+					   value="ognl:query.sequenceName"/>
+			</td>
+		</tr>				
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+                      value="message:sequence"/>	
+			</td>
+			<td>
+		    	<span jwcid="@Insert" 
+                      raw="true" 
+                      value="ognl:@researcher.utils.Formatter@breakString(query.sequence, '<br/>', 45)"/>		    	
+			</td>
+		</tr>
+		</table>
+		
+		
+	</td>
+	</tr>	
+
+	<tr>
+	<td>
+
+		<!-- ALL OTHER OPTIONS FOR PRIMARY DATABASE -->
+		<br/>
+		<span jwcid="@Insert" value="message:primaryDatabaseSearch"/>
+		<table class="form-box" style="margin-left: 0px; width: 100%;">
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:database"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" 
+                      value="ognl:query.databaseName"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:compositionalAdjustments"/>
+			</td>
+			<td>		
+				<select jwcid="@Insert" 
+						value="ognl:query.compositionalAdjustments.psiblastName" />
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:filters"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="message:lowComplexity"/>
+				<span jwcid="@Insert" 
+					   value="ognl:query.lowComplexityFilter"/>
+			    &nbsp;&nbsp;
+   			    <span jwcid="@Insert" value="message:maskLookup"/>
+				<span jwcid="@Insert" value="ognl:query.maskForLookupTableOnlyFilter"/> 
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:eValue"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.evalue"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:iterations"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.iterations"/>
+			</td>
+		</tr>		
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:eValueMultipass"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.evalueMultipass"/>
+			</td>
+		</tr>	
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:wordSize"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.wordSize"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:matrix"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.matrix"/>
+			</td>
+		</tr>
+		
+		<span jwcid="@If" condition="ognl:query.searchLocation.equals(@researcher.blast.SearchLocation@NCBI)">		 
+		<tr>
+		<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:pssm"/>	
+			</td>
+			<td>
+				<span jwcid="@Insert" 
+                      value="ognl:@researcher.utils.Formatter@breakString(query.pssm, '<br/>', 45)"/>
+			</td>
+		</tr>
+		</span>
+		
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:costToOpenAGap"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.costToOpenAGap"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:costToExtendAGap"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.costToExtendAGap"/>
+			</td>
+		</tr>
+		
+		<span jwcid="@If" condition="ognl:query.searchLocation.equals(@researcher.blast.SearchLocation@LOCAL_SERVER)">		 
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:restartFile"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.inputAlignmentFileName"/>
+			</td>						
+		</tr>
+		</span>
+		
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:commandLineOptions"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.commandLineOptions"/>
+			</td>
+		</tr>	
+		
+		<span jwcid="@If" condition="ognl:query.searchLocation.equals(@researcher.blast.SearchLocation@NCBI)">		 
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:phiPattern"/>
+			</td>
+			<td>
+				<span jwcid="phiPattern@Insert" 
+				       value="ognl:query.phiPattern"/>
+			</td>
+		</tr>						
+		</span>
+	</table>
+
+	</td>
+	</tr>	
+
+	<span jwcid="@If" condition="ognl:query.secondaryQuery != null">
+
+	<tr>
+	<td>	
+
+		<!-- OPTIONS FOR SECONDARY SEARCH -->
+		<br/>
+		<span jwcid="@Insert" value="message:secondaryDatabaseSearch"/>
+		<table class="form-box" style="margin-left: 0px; width: 100%;">
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:database"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" 
+                      value="ognl:query.secondaryQuery.databaseName"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:compositionalAdjustments"/>
+			</td>
+			<td>		
+				<select jwcid="@Insert" 
+						value="ognl:query.secondaryQuery.compositionalAdjustments.psiblastName" />
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:filters"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="message:lowComplexity"/>
+				<span jwcid="@Insert" 
+					   value="ognl:query.secondaryQuery.lowComplexityFilter"/>
+			    &nbsp;&nbsp;
+   			    <span jwcid="@Insert" value="message:maskLookup"/>
+				<span jwcid="@Insert" value="ognl:query.secondaryQuery.maskForLookupTableOnlyFilter"/> 
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:eValue"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.secondaryQuery.evalue"/>
+			</td>
+		</tr>			
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:wordSize"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.secondaryQuery.wordSize"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:matrix"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.matrix"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+					  value="message:costToOpenAGap"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.secondaryQuery.costToOpenAGap"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:costToExtendAGap"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.secondaryQuery.costToExtendAGap"/>
+			</td>
+		</tr>	
+		<tr>
+			<td class="newseq_window_title">
+				<span jwcid="@Insert" 
+				      value="message:commandLineOptions"/>
+			</td>
+			<td>
+				<span jwcid="@Insert" value="ognl:query.secondaryQuery.commandLineOptions"/>
+			</td>
+		</tr>				
+		</table>
+		
+	</td>
+	</tr>
+
+	
+	</span>
+
+	
+</table>
+
+
+
+</span>

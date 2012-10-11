@@ -1,0 +1,22 @@
+<span jwcid="@Border">
+<table     
+    jwcid="table@contrib:Table"
+    source="ognl:users"
+    columns="Username, Email, Admin, Edit, Delete"
+    pageSize="30"
+    class="data_table"
+    cellspacing="0" cellpadding="0"  	
+    >
+   	    <span jwcid="EditColumnValue@Block">
+	    	<a jwcid="@DirectLink" listener="listener:onClickEdit" parameters="ognl:components.table.tableRow.id">
+				<span jwcid="@Insert" value="message:Edit"/>
+	    	</a>	    	
+		</span>
+   	    <span jwcid="DeleteColumnValue@Block">
+	    	<a jwcid="@DirectLink" listener="listener:onClickDelete" parameters="ognl:components.table.tableRow.id">
+				<span jwcid="@Insert" value="message:Delete"/>
+	    	</a>	    	
+		</span>
+</table>
+
+</span>

@@ -1,0 +1,123 @@
+**************************************************************
+NOTE: it is recomended to read help documents in HTML format.
+**************************************************************
+
+Researcher's Documentation
+
+Contents
+
+   1. About Re-searcher
+   2. Getting Re-searcher
+   3. Installing Re-searcher
+   4. Starting and stopping Re-searcher
+   5. Configuring Re-searcher
+   6. Using Re-searcher
+   7. Getting help
+
+1. About Re-searcher
+
+Re-searcher is the system for recurrent psiblast searches. It enables timely detection of new proteins on the protein sequence databases. Searches can be done on a local server or at NCBI. It has a user-friendly web interface.
+
+Re-searcher was created by Valdemaras Repšys, Mindaugas Margelevičius and Česlovas Venclovas in the Institute of Biotechnology, Laboratory of Bioinformatics, Vilnius, Lithuania
+
+Using Re-searcher you can enter new protein sequences and choose psiblast parameters for the search. Each user has his own sequence list (or psiblast queries list) on which psiblst searches are executed periodically.
+
+Sequences which have new hits are marked with red color. User can always see all the hits found. New hits are also marked with red color. User gets an email when new hits are found if he chooses to get it when entering a new sequence. Also SMTP address must be configured for this feature to work.
+
+There is a possibility to perform double searches. Search is being performed on two distinct databases then. For instance, you can choose to perform the primary search on NR database and the secondary search on PDB database. Then the last iteration will be performed on PDB database using PSSM from the search on NR database.
+2. Getting Re-searcher
+
+Re-searcher is an open source project licensed under GPL license. You can download for free from here.
+3. Installing Re-searcher
+
+Make sure that you have java runtime environment version 6 or higher and java binary is in your path. You can check java version and whether it is in path by writing 'java -version' in your command line. If you don't have java, you can download it from here .
+
+Download researcher-windows.tar.gz or researcher-linux.tar.gz for windows or linux operating systems respectively. Uncompress the archive to the desired location. That's it!
+
+Additional Notes
+
+If you use linux and the application is to be used publicly it is recommended that all permissions of Re-searcher's files are granted to a separate user and the application itself is started by this user.
+
+Also, sometimes, you might want to change the hostname or the port of the Re-searcher's web server, this can be done by editing config/config.properties file.
+
+Running Re-searcher on your own web server
+
+Re-searcher comes bundled with Jetty web server. If you want to run Re-searcher on your own web server (like Tomcat), you have to download one of the installation archives and save the researcher.jar from there. researcher.jar contains the standard directory hierarchy for a java web application. IMPORTANT: When running Re-searearcher using your own java web server (servlet container) you must set a few java options: derby.system.home - directory for Re-searcher's database (usually just a location of an empty direcory, database get's created there automatically on the first run), log4j.conf - path to the log4j.properties file. You can get an example of log4j.properties from one of the Re-searcher's archives conf/log4j.properties
+4. Starting and stopping Re-searcher
+
+Windows
+
+To start the Re-searcher you can execute bin/researcher.bat.
+
+If you want Re-searcher to start every time you boot your computer you can install it as a windows service by clicking on bin/install-service.bat. After installing a service you might want to start it with bin/start-service.bat. To stop the service execute the bin/stop-service.bat file. To uninstall the service execute bin/uninstall-service.bat file.
+
+The application can take a few minutes to start. To start using Re-searcher go to the following link in your web browser: http://localhost:8080/Researcher/app (sometimes localhost must be replaced by a different hostname, if it is configured like this in config/config.properties file)
+
+Linux
+
+In linux Re-searcher is controlled with bin/researcher file. 'bin/researcher start' command starts the program in the background process, 'bin/researcher stop' stops it. 'bin/researcher status' shows whether the program is currently running or not.
+
+Also it is possible to start Re-searcher in the current console, to see all output. For this you need to execute 'bin/researcher console' command. You can stop it by pressing ctrl+c then.
+
+The application can take a few minutes to start. To start using Re-searcher go to the following link in your web browser: http://localhost:8080/Researcher/app (sometimes localhost must be replaced by a different hostname, if it is configured like this in config/config.properties file)
+5. Configuring Re-searcher
+
+When you run the application for the first time, you might want to configure some options like local psiblast server address, SMTP address and so on.
+
+To access the application enter the address http://localhost:8080/Researcher/app to your web browser. The login window should appear. When application runs for the first time, user admin is created with the password admin. Admin can add and delete users also configure other advanced options. To configure advanced options enter the configuration page by pressing on Configuration menu item.
+
+Configuring local psiblast server
+
+You acquire the ability to perform periodical searches on your own server if you configure local psiblast server. If you do not need this ability you can skip this paragraph.
+
+For the system to execute psiblast searches on your server, ssh server software must be installed there. Also the following options must be configured on Re-searcher:
+
+    * Blast Server Hostname or IP address: Your server's address.
+    * Blast Server SSH Username: Username that will be used to connect to the server and perform psiblast searches.
+    * Blast Server SSH Password: You need to specify password that will be used to connect to the blast server. IMPORTANT NOTE: sometimes password authentication is disabled on ssh servers for security reasons. In that case, leave this field empty and use public key authentication.
+    * Path to the Private Key File on the Web Server: Fill this field and leave 'Blast Server SSH Password' field empty if you use public key authentication. This field must contain the path to the private key, for instance, 'c:\documents\private.ppk'
+    * Passphrase for the Private Key: if there is no passphrase or you do not use public key authentication leave this field blank.
+    * Command Used to Invoke Psiblast: path to the psiblast executable, for instance '/usr/local/blast/bin/blastpgp'
+    * Command Used to Invoke Fastacmd: path to the fastacmd executable, for instance '/usr/local/blast/bin/blastpgp'
+    * Path for Temporary File Storage: folder for temporary files on blast server, for instance: /tmp/
+    * Number of Processors to Use for Blast: enter the number of processors you have or want to use on blast server.
+
+You also need to define the databases for the local psiblast server. To add new database enter the name of the database and a path to the fields at the bottom of the configuration page and press add. For instance name can be: 'NR', path: '/usr/local/blast/data/nr'. You can see all the databases in the table on the bottom right.
+
+Configuring email notification options
+
+    * SMTP Hostname: this address is used to send emails after new hits were found.
+    * Email From: When user gets notification he sees this email as a sender of the message.
+    * Application Link (Needed to Generate a Link to a Hit List): If you fill this field, users will get the link to the hits list on their emails. It is a very convenient, because user can view new hits at once, without logging in. Usually what you fill will be 'http://localhost:8080/Researcher/app'. You can also leave this field blank, then emails will not contain the link to the hits list.
+
+Configuring other options
+
+    * Allow User Registration: if this field is set on, 'Create new user' link appears on the login page so users can register themselves.
+
+6. Using Re-searcher
+
+You need to have a user account to work with Researcher. Administrator can create one. Also, you can create it yourself if you see the 'Crete new user' link on the login page. To create an account follow the link, enter your data and press create new user button. Now use your username and password to log in.
+
+New Sequence page
+
+After you log in you are redirected to the sequence list (which is empty if you logged in for the first time). To enter a new sequence for psiblast search follow the "New Sequence" link on menu and click "Add" button after specifying search parameters. Exhaustive description for search parameters is provided in a separate document.
+
+To perform a double search you need to specify the secondary database. Double search means that after performing the search on the primary database there will be one more iteration performed on the secondary database using primary searche's PSSM.
+The search should start in few minutes after entering a new sequence. Though searches are executed sequentially and there may be a longer delay if other searches are running at the time.
+
+One search can take from 5 minutes to 1 hour or more sometimes. It depends on search parameters and a number of hits.
+
+Sequence List page
+
+Sequence list page shows the main information about every sequence entered. The row of the sequence's table is marked red if new hits were found for that sequence. There are four links in every row of the table.
+
+By pressing query details link you enter the page with all information about the search and the sequence. If you press the 'Search Now' the search for the sequence will be started as soon as possible, usually in a few minutes. Number of hits and new hits (in brackets) are shown on Hits column. By pressing on it you enter the hits page. You delete the sequence and all it's hits by pressing delete link.
+
+Hits page
+
+All hits for the specific query are listed here. There is a possibility to order the hits table by any column. New hits are marked red. To mark all hits as old press 'Mark All Hits As Old' link. To check the alignment press 'Alignment' link. To see the fasta of the hits press the id of the hit. To get fastas of the hits follow the 'View New Sequences' or the 'View All Sequences' link.
+
+7. Getting Help
+
+You can ask for help by email: posu(at)users.sourceforge.net
+

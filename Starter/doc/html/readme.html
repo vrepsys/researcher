@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Re-searcher</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body style="margin: 0;">
+
+	<table cellspacing="0" border="0" style="margin-left: auto; margin-right: auto; width: 100%;">
+	<tr>
+	<td style="width: 199px;"> &nbsp; </td>
+	<td style="background-color: #0A2D43;width:70px;padding-left:20px;"> 
+		<img src="logo.png" width="50" height="99" border="0" alt=""> 
+	</td>
+	<td style="width: 10em;text-align: center;padding: 20px; padding-left: 0px; background-color: #0A2D43;"> 	
+		<a class="researcherMainLink" href="http://researcher.sf.net">Re-searcher</a>
+		<span class="mainSmall"> developed at </span> <br/> <a href="http://www.ibt.lt/bioinformatics/" class="ibtMainLink">Institute of Biotechnology,<br/>Vilnius, Lithuania</a>
+	</td>
+	<td style="padding: 14px;background-color: #0A2D43;vertical-align: bottom;">
+		<span class="menuitem"><a class="menulink" href="readme.html">Home</a></span>
+		<span class="menuitem"><a class="menulink" href="documentation.html">Documentation</a></span>
+		<span class="menuitem"><a class="menulink" href="http://sourceforge.net/project/showfiles.php?group_id=173135">Downloads</a></span>
+	</td>
+	<td style="width: 199px;"> &nbsp; </td>
+	</table>
+
+
+<div class="container">
+
+<span class="title">About Re-searcher</span>
+<p class="text" >
+Re-searcher is an open source system for recurrent psiblast searches developed in the <a href="http://www.ibt.lt/bioinformatics/">Institute of Biotechnology, Laboratory of Bioinformatics</a>, Vilnius, Lithuania. It enables timely detection of new proteins on the protein sequence databases.
+</p>
+<p class="text">
+Using Re-searcher you can enter new protein sequences and choose psiblast parameters for the search. Each user has his own sequence list (or psiblast queries list) on which psiblst searches are executed periodically. 
+</p>
+
+<span class="title">Quick Installation Guide</span>
+<p class="text" >
+Use the following instructions to install the Re-searcher for NCBI searches. If you encounter problems or you need additional explanation refer to the <a href="documentation.html">documentation</a>.  
+<ol>
+<li> Download and install <a href="http://www.java.com/en/download/index.jsp">Java Runtime Environment</a>. In Linux, set your $PATH variable to contain the folder of java executable.</li>
+<li> <a href="http://sourceforge.net/project/showfiles.php?group_id=173135">Download</a> and extract Re-searcher to desired location on your file system.</li>
+<li> To start Researcher in <span style="font-style:italic;">Windows</span> run the researcher/bin/researcher.bat.<br/>To Start Researcher in <span style="font-style:italic;">Linux</span> use the following command: "researcher/bin/researcher console".</li>
+<li> After starting, follow this link to start using Re-searcher <a href="http://localhost:8080/Researcher/app">http://localhost:8080/Researcher/app</a>. </li>
+</ol>
+</p>
+
+<span class="title">Configuring Local Psiblast Searches</span>
+<p class="text"> 
+In order to run searches on a local server you need to do some configuration. 
+Local server must have psiblast installed and ssh access enabled. 
+To cofigure Re-searcher's access to the local server:
+</p>
+
+<ol>
+<li>Login to Re-searcher as administrator (initially, user name and password both have value "admin"). Follow "Configuration" link on main menu.</li>
+<li>Fill in psiblast server options. For help on psiblast server options click the questionmark on Re-searcher or refer to the <a href="documentation.html#localparams">documentation.</a></li>
+</ol>
+
+<span class="title">Configuring Email Notifications</span>
+<p class="text"> 
+To enable email notifications:
+</p>
+
+<ol>
+<li>Login to Re-searcher as administrator (initially, user name and password both have value "admin"). Follow "Configuration" link on main menu.</li>
+<li>Fill in email notification options. For help on psiblast server options click the questionmark on Re-searcher or refer to the <a href="documentation.html#emailparams">documentation.</a></li>
+</ol>
+
+
+
+
+
+
+<a href="http://www.sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=235&amp;type=5" width="210" height="62" border="0" /></a>
+
+</div>
+</body>
+</html>

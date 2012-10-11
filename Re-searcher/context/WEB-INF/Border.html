@@ -1,0 +1,58 @@
+<html jwcid="@Shell" stylesheet="asset:stylesheet" title="message:window.title">
+<body jwcid="@Body" style="margin: 0px;">
+
+<span jwcid="@If" condition="ognl:userExists">
+
+	<table cellspacing="0" border="0" style="margin-left: auto; margin-right: auto; width: 100%;">
+	<tr>
+	<td
+        style="background-color: #0A2D43;width:70px;padding-left:20px;">
+        <span jwcid="@Image" image="ognl:logoImage" width="50" height="99" border="0"/>
+    </td>
+	<td style="width: 10em;text-align: center;padding: 20px;padding-left: 0px; background-color: #0A2D43;"> 
+		<a class="researcherMainLink" href="http://researcher.sf.net">Re-searcher</a>
+		<span class="mainSmall"> developed at </span> <br/> <a href="http://www.ibt.lt/bioinformatics/" class="ibtMainLink">Institute of Biotechnology,<br/>Vilnius, Lithuania</a>
+	</td>
+	<td style="padding: 14px;background-color: #0A2D43;">
+	<table style="border: 0;" cellpadding="0" cellspacing="0">
+	<tr>
+		<span jwcid="@For" source="ognl:pageTabNames" value="ognl:pageName">
+		<td class="nav">
+		    <a class="ognl:isActivePage() ? 'navlinkActive' : 'navlink'" jwcid="pageLink" >
+				<span jwcid="@Insert" value="ognl:pageTitle">Page Title</span>
+			</a>
+	    </td>
+	    <td style="width: 10px;">
+	    </td>
+		</span>
+		<td class="nav">
+				<a class="navlink" href="" jwcid="logoutLink"><span jwcid="@Insert" value="message:Logout"/></a>
+	    </td>
+	</tr>
+	</table>
+	</td>
+	</tr>
+	</table>
+	<div style="height: 5px;"> </div>
+
+<table class="content" cellspacing="0" cellpadding="0" style="width: 100%">
+<tr>
+	<td style="padding-top: 10px;">
+	
+		<span jwcid="@RenderBody">Page content goes here.</span>
+		
+		
+	</td>
+</tr>
+</table>
+
+</span>
+<span jwcid="@Else">
+
+	<span jwcid="@RenderBody">Page content goes here.</span>
+
+</span>
+
+
+</body>
+</html>

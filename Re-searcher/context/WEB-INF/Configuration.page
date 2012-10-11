@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+  
+  
+<page-specification>
+
+	<component id="form" type="Form">
+   		<binding name="listener" value="listener:onOk"/>
+	    <binding name="clientValidationEnabled" value="true"/>
+		<binding name="delegate" value="beans.delegate"/>	    
+	</component>
+	
+	<component id="errors" type="Delegator">
+   		<binding name="delegate" value="beans.delegate.firstError"/>   		
+	</component>
+
+	<component id="databaseName" type="TextField">
+   		<binding name="value" value="databaseName"/>
+   		<binding name="validators" value="validators:required"/>   		
+		<binding name="displayName" value="message:Name"/>
+	</component>
+	
+	<component id="databasePath" type="TextField">
+   		<binding name="value" value="databasePath"/>
+   		<binding name="validators" value="validators:required"/>   		
+		<binding name="displayName" value="message:Path"/>
+	</component>
+	
+	<component id="parametersForm" type="Form">
+   		<binding name="listener" value="listener:onSaveParameters"/>
+	    <binding name="clientValidationEnabled" value="true"/>
+		<binding name="delegate" value="beans.delegate"/>	    
+	</component>
+	
+	<component id="blastHostname" type="TextField">
+   		<binding name="value" value="blastHostname"/>
+		<binding name="displayName" value="message:blastHostname"/>
+	</component>
+	
+	<component id="blastUsername" type="TextField">
+   		<binding name="value" value="blastUsername"/>
+		<binding name="displayName" value="message:blastUsername"/>
+	</component>
+	
+	<component id="blastPassword" type="TextField">
+   		<binding name="value" value="sshPassword"/>
+		<binding name="displayName" value="message:blastPassword"/>
+	    <binding name="hidden" value="true"/>		
+	</component>	
+	
+	<component id="pathToPrivateKey" type="TextField">
+   		<binding name="value" value="pathToPrivateKey"/>
+		<binding name="displayName" value="message:pathToPrivateKey"/>
+	</component>
+
+	<component id="passphrase" type="TextField">
+   		<binding name="value" value="passphrase"/>
+		<binding name="displayName" value="message:passphrase"/>
+	    <binding name="hidden" value="true"/>		
+	</component>	
+	   
+	<component id="psiBlastCommand" type="TextField">
+   		<binding name="value" value="psiBlastCommand"/>
+		<binding name="displayName" value="message:psiBlastCommand"/>
+	</component>	   
+	
+	<component id="fastaCmdCommand" type="TextField">
+   		<binding name="value" value="fastaCmdCommand"/>
+		<binding name="displayName" value="message:fastaCmdCommand"/>
+	</component>
+	
+	<component id="pathToTmp" type="TextField">
+   		<binding name="value" value="pathToTmp"/>
+		<binding name="displayName" value="message:pathToTmp"/>
+	</component>	   	
+	
+	<component id="processorsToUse" type="TextField">
+   		<binding name="value" value="processorsToUse"/>
+   		<binding name="translator" value="translator:number"/>
+		<binding name="displayName" value="message:processorsToUse"/>
+	</component>	
+		
+</page-specification>

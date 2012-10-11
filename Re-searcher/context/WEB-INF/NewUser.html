@@ -1,0 +1,69 @@
+<span jwcid="@Border">
+
+	<form jwcid="form">	
+	<span jwcid="@If" condition="ognl:!userExists">
+	
+	<table cellspacing="0" border="0" style="margin-left: auto; margin-right: auto; margin-top: 0; width: 100%;">
+	<tr>
+	<td
+        style="background-color: #0A2D43;width:70px;padding-left:20px;">
+        <span jwcid="@Image" image="ognl:logoImage" width="50" height="99" border="0"/>
+    </td>
+	<td style="width: 10em;text-align: center;padding: 20px;padding-left:0px;background-color: #0A2D43;"> 
+		<a class="researcherMainLink" href="http://researcher.sf.net">Re-searcher</a>
+		<span class="mainSmall"> developed at </span> <br/> <a href="http://www.ibt.lt/bioinformatics/" class="ibtMainLink">Institute of Biotechnology,<br/>Vilnius, Lithuania</a>
+	</td>
+	<td style="padding: 14px;background-color: #0A2D43;">
+		&nbsp;
+	</td>
+	</table>
+	
+</span>
+	
+		<span jwcid="@If" condition="ognl:delegate.hasErrors">
+			<div class="error-box" > 
+				<span jwcid="errors"/> 
+			</div> 
+		</span>
+		
+		<table class="form-box" style="margin-top: 40px;">
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:Username"/>
+			</td>
+			<td>
+				<input class="text-input" type="text" jwcid="username" style="width: 10em;"/> <br/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:Password"/>
+			</td>
+			<td>
+				<input class="text-input" type="password" jwcid="password" style="width: 10em;"/> <br/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:Email"/>
+			</td>
+			<td>
+				<input class="text-input" type="text" jwcid="email" style="width: 10em;"/> <br/>
+			</td>
+		</tr>
+		<span jwcid="@If" condition="ognl:userExists">
+			<tr>
+				<td>
+					<span jwcid="@Insert" value="message:IsAdmin"/>
+				</td>
+				<td>
+					<input class="checkbox" type="text" jwcid="admin" />
+				</td>
+			</tr>	
+		</span>
+		<tr>
+			<td style="text-align: right;" colspan="2"><input class="button" jwcid="@Submit" value="message:Submit" style="margin:5px;"/></td>
+		</tr>				
+	</table>
+	</form>
+</span>

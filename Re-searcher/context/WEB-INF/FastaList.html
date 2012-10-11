@@ -1,0 +1,14 @@
+<span jwcid="@For" source="ognl:hitList" value="ognl:hit">
+	<span jwcid="@If" condition="ognl:hit.fastaSequence != null">
+<span jwcid="@Insert" raw="true" value="ognl:@researcher.utils.SeqUtil@formatFasta(hit.fastaSequence.fasta, 80)"/>
+	</span>
+	<span jwcid="@Else">
+Fasta for the sequence is not in the database
+(probably there was an error while retreiving the sequence from ncbi or local sequence database)
+Sequence:
+<span jwcid="@Insert" raw="true" value="ognl:hit.subjectId"/>
+<span jwcid="@Insert" raw="true" value="ognl:hit.subjectDef"/>
+
+</span>
+	
+</span>

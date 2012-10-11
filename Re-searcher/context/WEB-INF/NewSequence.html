@@ -1,0 +1,625 @@
+<span jwcid="@Border">
+	
+<form jwcid="form@Form"      
+      delegate="ognl:beans.validation"
+      refresh="listener:onFormRefresh">
+
+	<span jwcid="@If" condition="ognl:validation.hasErrors">
+		<div class="error-box" > 
+			<span jwcid="errors@Delegator"
+			      delegate="ognl:validation.firstError"/> 
+		</div> 
+	</span>
+	
+	<span jwcid="@If" 
+		  condition="ognl:infoMessage != null">
+		<div class="info-box" > 
+			<span jwcid="@Insert" value="ognl:infoMessage"/> 
+		</div> 
+	</span>		
+	
+	<table style="margin-left: auto; margin-right: auto;">
+		<tr>
+		<td style="vertical-align: top;">		
+		
+			<!-- SEARCH TYPE (NCBI/LOCAL SERVER) -->
+			<table class="form-box" style="margin-left: 0px;">
+			<tr>
+				<td class="title">
+					<span jwcid="@Insert" 
+						  value="message:searchLocation"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+					      link="/Researcher/static_pages/nsparams.html#searchLocationHelp" 
+					      text="message:searchLocationHelp"/>
+				</td>
+			<td>		
+				<select jwcid="@PropertySelection" 
+						model="ognl:searchLocationItems" 
+						value="ognl:searchLocation"
+						onchange="javascript:this.form.events.refresh();"
+						size="2" />
+			</td>
+			</table>
+			
+			
+		</td>
+		</tr>
+		
+		<span jwcid="@If" condition="ognl:searchLocation.equals(@researcher.blast.SearchLocation@LOCAL_SERVER) && !localSearchReady()">
+					<div class="info-box" > 
+						<span jwcid="@Insert" value="message:localNAWarning" />
+					</div> 
+		</span>
+		<span jwcid="@Else">		
+		
+		<tr>
+		<td> 
+		
+		
+			<!-- PERIOD & EMAIL NOTIFICATION FORMS -->
+			<table class="form-box" style="margin-left: 0px; width: 100%">
+				<tr>
+					<td class="newseq_window_title" >
+						<span jwcid="@Insert" 
+						      value="message:period"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#periodHelp" 
+						      text="message:periodHelp"/>
+					</td>
+					<td>
+						<input jwcid="period@TextField"
+	        				   value="ognl:period"					       
+	                           class="text-input" 
+						       type="text"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="newseq_window_title">
+						<span jwcid="@FieldLabel" field="component:notifyByMail"/>	
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#notifyByMailHelp" 
+						      text="message:notifyByMailHelp"/>											
+					</td>
+					<td>
+						<input jwcid="notifyByMail@Checkbox" 
+							   value="ognl:notifyByMail"
+							   displayName="message:notifyByMail"/>
+						<br/>
+						<span jwcid="@If" condition="ognl:!mailConfigured()">
+							<span jwcid="@Insert" raw="true" value="message:mailWarnining" />
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="newseq_window_title" >
+						<span jwcid="@Insert" 
+						      value="message:maxNumberOfHits"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#maxNumberOfHitsHelp" 
+						      text="message:maxNumberOfHitsHelp"/>
+					</td>
+					<td>
+						<input jwcid="maxNumberOfHits@TextField"
+	        				   value="ognl:maxNumberOfHits"					       
+	                           class="text-input" 
+						       type="text"/>
+					</td>
+				</tr>				
+			</table>
+			
+			
+		</td>
+		</tr>
+		<tr>
+		<td>	
+		
+	
+		
+	
+			<!-- SEQUENCE NAME & SEQUENCE FORMS -->
+			<table class="form-box" style="margin-left: 0px; width: 100%;">
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" value="message:sequenceName"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+					      link="/Researcher/static_pages/nsparams.html#sequenceNameHelp" 
+					      text="message:sequenceNameHelp"/>
+				</td>
+				<td>
+					<input jwcid="sequenceName" 
+					       class="text-input" 
+					       style="width: 20em;"/>
+				</td>
+			</tr>				
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:sequence"/>
+			      	<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+			      	      link="/Researcher/static_pages/nsparams.html#sequenceHelp" 
+			      	      text="message:sequenceHelp"/>	
+				</td>
+				<td>
+					<textarea jwcid="sequenceString@TextArea" 
+							  value="ognl:sequenceString"
+		                      class="text-input"
+							  style="height: 10em; width: 20em;"/>
+				</td>
+			</tr>
+			</table>
+			
+			
+		</td>
+		</tr>	
+		<tr>
+		<td>
+		
+			<!-- ALL OTHER OPTIONS FOR PRIMARY DATABASE -->
+			<br/>
+			<span jwcid="@Insert" value="message:primaryDatabaseSearch"/>
+			<table class="form-box" style="margin-left: 0px; width: 100%;">
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:database"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#databaseHelp" 
+						  text="message:databaseHelp"/>							  
+						  
+				</td>
+				<td>
+					<span jwcid="@If" condition="ognl:searchLocation.equals(@researcher.blast.SearchLocation@NCBI)">		 
+						<input jwcid="ncbiDatabase@PropertySelection" 
+							   model="ognl:ncbiDatabaseItems"
+							   value="ognl:ncbiDatabase"
+							   type="text" 
+		                       class="text-input"
+							   style="width: 20em;"/>
+					</span>
+					<span jwcid="@Else">
+						<input jwcid="database@PropertySelection" 
+							   model="ognl:databaseItems"
+							   value="ognl:database"
+							   type="text" 
+		                       class="text-input"
+							   style="width: 20em;"/>				
+					</span>	   
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:compositionalAdjustments"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#compositionalAdjustmentsHelp" 
+						      text="message:compositionalAdjustmentsHelp"
+						      width="30em"/>							  
+				</td>
+				<td>		
+					<select jwcid="@PropertySelection" 
+							model="ognl:compositionalAdjustmentsItems" 
+							value="ognl:compositionalAdjustments" />
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:filters"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#filtersHelp" 
+						      text="message:filtersHelp"/>							  
+				</td>
+				<td>
+					<span jwcid="@FieldLabel" field="component:lowComplexity"/>
+					<input jwcid="lowComplexity@Checkbox" 
+						   value="ognl:lowComplexity"
+						   displayName="message:lowComplexity"/>
+				    &nbsp;&nbsp;
+	   			    <span jwcid="@FieldLabel" field="component:maskLookup"/>
+					<input jwcid="maskLookup@Checkbox" 
+						   value="ognl:maskLookup"
+	   			       	   displayName="message:maskLookup"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:eValue"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#eValueHelp" 
+						      text="message:eValueHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="@TextField"
+						   value="ognl:eValue"
+					       type="text"  
+						   class="text-input" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:iterations"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#iterationsHelp" 
+						      text="message:iterationsHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="numberOfIterations@TextField"
+						   value="ognl:numberOfIterations"
+			               class="text-input" 
+					       type="text"
+					       style="width: 20em;"/>
+				</td>
+			</tr>		
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:eValueMultipass"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#eValueMultipassHelp" 
+						      text="message:eValueMultipassHelp"/>							  
+				</td>
+				<td>
+					<input jwcid="eValueMultipass@TextField" 
+						   value="ognl:eValueMultipass"
+					 	   class="text-input" 
+					       type="text" 
+					       style="width: 20em;"/>
+				</td>
+			</tr>	
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:wordSize"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#wordSizeHelp" 
+						      text="message:wordSizeHelp"/>					      
+				</td>
+				<td>
+					<input jwcid="wordSize@TextField" 
+						   value="ognl:wordSize"
+					       type="text" 
+					       class="select-box" 
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:matrix"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#matrixHelp" 
+						      text="message:matrixHelp"/>					      
+				</td>
+				<td>
+					<input jwcid="matrix@PropertySelection" 
+						   model="ognl:matrixItems"
+						   class="select-box"
+						   value="ognl:matrix" 
+					       type="text" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			
+			<span jwcid="@If" condition="ognl:searchLocation.equals(@researcher.blast.SearchLocation@NCBI)">		 
+			<tr>
+			<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:pssm"/>	
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#pssmHelp" 
+						  text="message:pssmHelp"/>					      
+				</td>
+				<td>
+					<textarea jwcid="pssm@TextArea" 
+							  value="ognl:pssm"
+		                      class="text-input" 						  
+							  style="height: 10em; width: 300px;margin-right:5px;margin-top:5px;"/>
+				</td>
+			</tr>
+			</span>
+			
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:costToOpenAGap"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#costsHelp" 
+						  text="message:costToOpenAGapHelp"/>						  
+				</td>
+				<td>
+					<input jwcid="costToOpenAGap@TextField" 
+						   value="ognl:costToOpenAGap"
+						   class="text-input" 
+					       type="text" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:costToExtendAGap"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#costsHelp" 
+						  text="message:costToExtendAGapHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="costToExtendAGap@TextField"
+						   value="ognl:costToExtendAGap"
+					       class="text-input" 
+					       type="text" 				        
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			
+			<span jwcid="@If" condition="ognl:searchLocation.equals(@researcher.blast.SearchLocation@LOCAL_SERVER)">		 
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:restartFile"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#restartFileHelp" 
+						      text="message:restartFileHelp"/>						      
+				</td>
+				<td>
+					<span jwcid="@If" condition="ognl:restartFileName == null">
+						<input jwcid="restartFile@Upload"
+							   file="ognl:restartFile"
+	        				   class="text-input" 
+						       type="text" 
+						       />
+					</span>
+					<span jwcid="@Else">
+						<span jwcid="@Insert" 
+						      value="ognl:restartFileName"/>
+						<span jwcid="@LinkSubmit" 
+						      listener="listener:onRemoveRestartFile">
+						      <span jwcid="@Insert" value="message:remove"/>
+						</span>
+					</span>
+				</td>						
+			</tr>
+			</span>
+			
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:commandLineOptions"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#commandLineOptionsHelp" 
+						      text="message:commandLineOptionsHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="commandLineOptions@TextField" 
+					       value="ognl:commandLineOptions"
+					       class="text-input" 
+					       type="text" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>	
+			
+			<span jwcid="@If" condition="ognl:searchLocation.equals(@researcher.blast.SearchLocation@NCBI)">		 
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:phiPattern"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#phiPatternHelp" 
+						  text="message:phiPatternHelp"/>					      
+				</td>
+				<td>
+					<input jwcid="phiPattern@TextField" 
+					       value="ognl:phiPattern"
+					       class="text-input" 
+					       type="text" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>						
+			</span>
+		</table>
+		
+		
+		</td>
+		</tr>
+		<tr>
+		<td>
+		
+		
+			<!-- OPTIONS FOR SECONDARY SEARCH -->
+			<br/>
+			<span jwcid="@Insert" value="message:secondaryDatabaseSearch"/>
+			<table class="form-box" style="margin-left: 0px; width: 100%;">
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:database"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#secondaryDatabaseHelp" 
+						  text="message:secondaryDatabaseHelp"/>						  
+				</td>
+				<td>
+					<span jwcid="@If" condition="ognl:searchLocation.equals(@researcher.blast.SearchLocation@NCBI)">		 		 
+						<input jwcid="ncbiDatabase2@PropertySelection" 
+							   model="ognl:ncbiSecondaryDatabaseItems"
+							   value="ognl:ncbiDatabase2"
+							   type="text" 
+		                       class="text-input"
+							   style="width: 20em;"/>
+					</span>
+					<span jwcid="@Else">
+						<input jwcid="database2@PropertySelection" 
+							   model="ognl:secondaryDatabaseItems"
+							   value="ognl:database2"
+							   type="text" 
+		                       class="text-input"
+							   style="width: 20em;"/>				
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:compositionalAdjustments"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#compositionalAdjustmentsHelp" 
+						      text="message:compositionalAdjustmentsHelp"
+						      width="30em"/>
+				</td>
+				<td>		
+					<select jwcid="@PropertySelection" 
+							model="ognl:compositionalAdjustmentsItems" 
+							value="ognl:compositionalAdjustments2" />
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:filters"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#filtersHelp" 
+						      text="message:filtersHelp"/>							  
+				</td>
+				<td>
+					<span jwcid="@FieldLabel" field="component:lowComplexity2"/>
+					<input jwcid="lowComplexity2@Checkbox" 
+						   value="ognl:lowComplexity2"
+						   displayName="message:lowComplexity"/>
+				    &nbsp;&nbsp;
+	   			    <span jwcid="@FieldLabel" field="component:maskLookup2"/>
+					<input jwcid="maskLookup2@Checkbox" 
+						   value="ognl:maskLookup2"
+	   			       	   displayName="message:maskLookup"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:eValue"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#eValueHelp" 
+						      text="message:eValueHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="@TextField"
+						   value="ognl:eValue2"
+					       type="text"  
+						   class="text-input" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>			
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:wordSize"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#wordSizeHelp" 
+						      text="message:wordSizeHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="@TextField" 
+						   value="ognl:wordSize2"
+					       type="text" 
+					       class="select-box" 
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:matrix"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#matrixHelp" 
+						      text="message:matrixHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="@PropertySelection" 
+						   model="ognl:matrixItems"
+						   class="select-box"
+						   value="ognl:matrix2" 
+					       type="text" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+						  value="message:costToOpenAGap"/>
+						<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						      link="/Researcher/static_pages/nsparams.html#costsHelp" 
+						      text="message:costToOpenAGapHelp"/>							  
+				</td>
+				<td class="newseq_window_title">
+					<input jwcid="@TextField" 
+						   value="ognl:costToOpenAGap2"
+						   class="text-input" 
+					       type="text" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:costToExtendAGap"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#costsHelp" 
+						  text="message:costToExtendAGapHelp"/>						      
+				</td>
+				<td>
+					<input jwcid="@TextField"
+						   value="ognl:costToExtendAGap2"
+					       class="text-input" 
+					       type="text" 				        
+					       style="width: 20em;"/>
+				</td>
+			</tr>	
+			<tr>
+				<td class="newseq_window_title">
+					<span jwcid="@Insert" 
+					      value="message:commandLineOptions"/>
+					<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+						  link="/Researcher/static_pages/nsparams.html#commandLineOptionsHelp" 
+						  text="message:commandLineOptionsHelp"
+						  top="-100"/>							      
+				</td>
+				<td>
+					<input jwcid="@TextField" 
+					       value="ognl:commandLineOptions2"
+					       class="text-input" 
+					       type="text" 				       
+					       style="width: 20em;"/>
+				</td>
+			</tr>				
+		</table>
+			
+		</td>
+		</tr>
+		<tr>
+		<td style="text-align: right; padding-right: 0; vertical-align: middle;">
+		
+			<!-- RESET BUTTON -->
+
+			<input type="reset" class="button" value="Reset Forms" style="margin:5px;"/>
+			<span jwcid="@HelpBox"
+			      link="/Researcher/static_pages/nsparams.html#buttonsHelp" 
+			      text="message:resetHelp" 
+			      style="background-color: white;" 
+			      left="-60" 
+			      top="-160"/>
+			&nbsp;&nbsp;&nbsp;
+			<!-- SUBMIT BUTTONS -->
+			<input jwcid="@Submit" class="button" action="listener:onAdd" value="message:add" style="margin:5px;"/>
+			<span jwcid="@HelpBox" link="/Researcher/static_pages/nsparams.html#buttonsHelp" text="message:addHelp" style="background-color: white;" left="-200" top="-100"/>
+			&nbsp;&nbsp;&nbsp;
+			<input jwcid="@Submit" class="button" action="listener:onOk" value="message:submit" style="margin:5px;"/>
+			<span jwcid="@HelpBox" link="/Researcher/static_pages/nsparams.html#buttonsHelp" text="message:submitHelp" style="background-color: white;" left="-300" top="-100"/>
+	
+		</td>	
+		</tr>
+		
+	</span>		
+	</table>	
+
+</form>
+</span>	

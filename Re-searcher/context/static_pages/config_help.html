@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Re-Searcher Configuration Help</title>
+  <link rel="stylesheet" type="text/css" href="style.css"/>  
+</head>
+
+<body style="margin: 0;">
+
+<table cellspacing="0" border="0"
+style="margin-left: auto; margin-right: auto; width: 100%;">
+  <tbody>
+    <tr>
+      <td style="width: 199px;">  </td>
+      <td
+        style="background-color: #0A2D43;width:70px;padding-left:20px;"><img
+        src="/Researcher/images/logo.jpg" width="50" height="99" border="0" alt="" />
+      </td>
+      <td
+      style="width: 10em;text-align: center;padding: 20px; padding-left: 0px; background-color: #0A2D43;"><a
+        class="researcherMainLink"
+        href="http://researcher.sf.net">Re-searcher</a> <span
+        class="mainSmall">developed at </span> <br />
+        <a href="http://www.ibt.lt/bioinformatics/"
+        class="ibtMainLink">Institute of Biotechnology,<br />
+        Vilnius, Lithuania</a> </td>
+      <td
+      style="padding: 14px;background-color: #0A2D43;vertical-align: bottom;"><span
+        class="menuitem"><a class="menulink"
+        href="index.html">Home</a></span> <span class="menuitem"><a
+        class="menulink" href="documentation.html">Documentation</a></span>
+        <span class="menuitem"><a class="menulink"
+        href="http://sourceforge.net/project/showfiles.php?group_id=173135">Downloads</a></span>
+      </td>
+      <td style="width: 199px;">  </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="container">
+
+<p class="navText"><strong>Contents</strong></p>
+
+<ol>
+<li class="navText"><a href="#psiblastOptsHelp">Psiblast Server Options</a></li>
+<li class="navText"><a href="#emailOptsHelp">Email Notification Options</a></li>
+<li class="navText"><a href="#otherOptsHelp">Other Options</a></li>
+<li class="navText"><a href="#AddNewDatabaseHelp">Add new database</a></li>
+</ol>
+
+<span class="title"><a name="psiblastOptsHelp"></a>1. Psiblast Server Options</span>
+
+          <p class="text">You acquire the ability to perform periodical searches on your own server if you configure local psiblast server. If you do not need this ability just leave all the form fields blank. </p>
+          <p class="text">For the system to execute psiblast searches on your server, ssh server software must be installed there. Also the following options must be configured on Re-searcher:</p>
+          <div align="justify">
+            <ul>
+              <li> Blast Server Hostname or IP address: Your server's address.</li>
+              <li> Blast Server SSH Username: Username that will be used to connect to the server and perform psiblast searches.</li>
+              <li> Blast Server SSH Password: You need to specify password that will be used to connect to the blast server. IMPORTANT NOTE: sometimes password authentication is disabled on ssh servers for security reasons. In that case, leave this field empty and use public key authentication. </li>
+              <li> Path to the Private Key File on the Web Server: Fill this field and leave  'Blast Server SSH Password' field empty if you use public key authentication. This field must contain the path to the private key, for instance, 'c:\documents\private.ppk' </li>
+
+              <li> Passphrase for the Private Key: if there is no passphrase or you do not use public key authentication leave this field blank.</li>
+              <li> Command Used to Invoke Psiblast: path to the psiblast executable, for instance '/usr/local/blast/bin/blastpgp'</li>
+              <li> Command Used to Invoke Fastacmd: path to the fastacmd executable, for instance  '/usr/local/blast/bin/blastpgp'</li>
+              <li> Path for Temporary File Storage: folder for temporary files on blast server, for instance: /tmp/ </li>
+              <li> Number of Processors to Use for Blast: enter the number of processors you have or want to use on blast server. </li>
+            </ul>
+</span>
+
+<span class="title"><a name="emailOptsHelp"></a>2. Email Notification Options</span>
+
+		  <p class="text"> Email notification options must be configured in order to allow email notifications on new hits.</p>
+            <ul>
+              <li> SMTP Hostname: this address is used to send emails after new hits were found. </li>
+              <li> Email From: When user gets notification he sees this email as a sender of the message.</li>
+              <li> Application Link (Needed to Generate a Link to a Hit List): If you fill this field, users will get the link to the hits list on their emails. It is a very convenient, because user can view new hits at once, without logging in. Usually what you fill will be 'http://localhost:8080/Researcher/app'. You can also leave this field blank, then emails will not contain the link to the hits list.</li>
+            </ul>
+
+<span class="title"><a name="otherOptsHelp"></a>3. Other Options</span>
+
+<p class="text">
+	Allow User Registration: if this field is set on, 'Create new user' link appears on the login page so users can register themselves.
+</p>
+
+<span class="title"><a name="AddNewDatabaseHelp"></a>4. Add new database</span>
+
+<p class="text">
+	To allow searches on a local server psiblast databases have to be entered here. To add a new database enter the name of the database and a path to the fields at the bottom of the configuration page and press add. For instance name can be: 'NR', path: '/usr/local/blast/data/nr'. It is possible to see all the databases in the table on the bottom right.
+</p>
+
+</div>
+</body>
+</html>
+

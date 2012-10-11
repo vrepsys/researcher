@@ -1,0 +1,67 @@
+<span jwcid="@Border">
+<table     
+    jwcid="table@contrib:Table"
+    source="ognl:queries"
+    columns="EnterDate, SequenceName, QueryDetails:ShortDetails:, LastSearchDate, RecentHitsDate, Period:Period:, Hits:hits.size:, Delete:Period:"
+    pageSize="-1"
+    class="data_table"
+    cellspacing="0" cellpadding="0"
+   	row="ognl:row"
+	rowsClass="ognl:row.getHasNewResults() == true ? 'new_results' : null"
+	initialSortColumn="EnterDate"
+    >
+    	<span jwcid="PeriodColumnValue@Block">
+    	<table cellspacing="0" cellpadding="0">
+    	<tr>
+    		<td style="border: 0;padding-left: 10px;"> 
+    			<span jwcid="@Insert" value="ognl:row.period" /> 
+    		</td>
+    		<td style="border: 0;">
+	    		<span jwcid="@If" condition="ognl:!components.table.tableRow.askingForSearch">
+		    	<a jwcid="@DirectLink" listener="listener:onClickSearchNow" parameters="ognl:components.table.tableRow.id">
+					<span jwcid="@Insert" value="message:SearchNow"/>
+		    	</a>
+		    	</span>
+	    	</td>
+	    </tr>
+	    </table>
+    	</span>
+	    <span jwcid="EnterDateColumnValue@Block">
+	    	<span jwcid="@Insert" value="ognl:@researcher.utils.Formatter@formatDate(components.table.tableRow.EnterDate)"/>
+		</span>
+	    <span jwcid="LastSearchDateColumnValue@Block" style="color: blue">	    
+	    	<span jwcid="@InsertNbsp" value="ognl:@researcher.utils.Formatter@formatDate(components.table.tableRow.LastSearchDate)"/>	    	
+		</span>
+	    <span jwcid="RecentHitsDateColumnValue@Block">
+	    	<span jwcid="@InsertNbsp" value="ognl:@researcher.utils.Formatter@formatDate(components.table.tableRow.RecentHitsDate)"/>
+		</span>
+	    <span jwcid="SequenceColumnValue@Block">
+	    	<span jwcid="@Insert" value="ognl:@researcher.utils.Formatter@shortenTheSequence(components.table.tableRow.Sequence)"/>
+		</span>
+	    <span jwcid="HitsColumnValue@Block">
+	    	<a jwcid="@DirectLink" listener="listener:onClickSequence" parameters="ognl:components.table.tableRow.id">
+	    		<span style="white-space: nowrap">
+					<span jwcid="@Insert" value="ognl:row.numberOfHits"/>
+					<span jwcid="@If" condition="ognl:row.numberOfNewHits != 0">
+						(<span jwcid="@Insert" value="ognl:row.numberOfNewHits"/>)
+					</span>
+				</span>
+	    	</a>	    	
+		</span>				
+	    <span jwcid="DeleteColumnValue@Block">
+	    	<a jwcid="@DirectLink" listener="listener:onClickDelete" parameters="ognl:components.table.tableRow.id">
+				<span jwcid="@Insert" value="message:DeleteWord"/>
+	    	</a>	    	
+		</span>		
+	    <span jwcid="QueryDetailsColumnValue@Block">
+	    	<a jwcid="@DirectLink" listener="listener:onClickView" parameters="ognl:components.table.tableRow.id">
+				<span jwcid="@Insert" value="ognl:components.table.tableRow.shortDetails"/>
+				<span jwcid="@If" condition="ognl:components.table.tableRow.blastErrors != null">
+					<span class="error-text" style="white-space: nowrap;">
+						<span jwcid="@Insert" value="message:error"/>
+					</span>					
+				</span>
+	    	</a>
+		</span>
+</table>
+</span>

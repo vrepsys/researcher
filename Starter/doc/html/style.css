@@ -1,0 +1,133 @@
+body  
+{
+  font-weight : normal;
+  font-family: verdana, arial, helvetica;
+  background-color: #e5e5e5;
+}
+
+.menulink {
+ 	color: white;
+	font-weight: bold;
+	padding-right: 6px;
+	padding-left: 6px;
+	font-variant: small-caps;
+	font-size: 18px;
+
+}
+
+.menulink:hover {
+ 	color: white;
+	font-weight: bold;
+	padding-right: 6px;
+	padding-left: 6px;
+	font-variant: small-caps;
+	font-size: 18px;
+	text-decoration: underline;
+
+}
+
+.menuitem {
+
+
+
+}
+.subtitle {
+	font-weight: bold;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.title {
+	font-weight: bold;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.text {
+	text-align: justify;
+	padding-top: 1px;
+	margin-top: 0px;
+}
+
+.container {
+	margin-left: 200px; 
+   margin-right: 200px; 
+   padding: 20px 10px 180px 10px; 
+   background-color: white;
+   border-left: dashed 1px #aaa;
+   border-right: dashed 1px #aaa;   
+}
+
+a {
+
+font-weight: normal;
+text-decoration: none;
+
+}
+
+a:hover {
+
+font-weight: normal;
+text-decoration: underline;
+
+}
+
+.navText {
+        line-height:16px;
+        letter-spacing:.1em;
+        text-decoration: none;
+		  padding-bottom: 8px;        
+}
+
+a.researcherMainLink
+{
+	font-family: arial; 
+	font-style: italic; 
+	font-variant: small-caps; 
+	font-weight: 900;
+	font-size: 32px; 
+	line-height: normal; 
+	font-size-adjust: none; 
+	color: white; 
+	text-decoration: none;
+	white-space:nowrap;
+}
+
+a.researcherMainLink:hover
+{
+   text-decoration: underline;   
+}
+
+a.researcherMainLink:hover
+{
+   text-decoration: underline;   
+}
+
+
+
+a.ibtMainLink
+{
+	font-family: arial; 
+	font-style: italic; 
+	font-variant: small-caps; 
+	font-weight: normal;
+	font-size: 12px; 
+	line-height: normal; 
+	font-size-adjust: none; 
+	font-stretch: normal; 
+	color: white; 
+	text-decoration: none;
+	white-space:nowrap;
+}
+
+.mainSmall {
+	font-family: arial; 
+	font-style: italic; 
+	font-variant: small-caps; 
+	font-weight: normal;
+	font-size: 12px; 
+	line-height: normal; 
+	font-size-adjust: none; 
+	font-stretch: normal; 
+	color: white; 
+}

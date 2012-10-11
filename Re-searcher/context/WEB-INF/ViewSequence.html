@@ -1,0 +1,16 @@
+<span jwcid="@Border">
+	<table class="form-box" style="margin-left: 0px;">
+	<tr>
+		<td> 
+			<span jwcid="@If" condition="ognl:sequence != null">
+				<pre style="font-size: 1.2em;">
+<span raw="true" jwcid="@Insert" value="ognl:linkedSequence"/>
+				</pre>
+			</span>
+			<span jwcid="@Else">
+				<span jwcid="@Insert" value="message:noSeqAvailable"/>
+			</span>
+		</td>
+	</tr>	
+	</table>
+</span>

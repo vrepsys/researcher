@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>login</title>
+  <link rel="stylesheet" type="text/css" href="/Researcher/css/researcher.css"/>
+</head>
+<body jwcid="@Body" style="margin: 0;">
+
+<form jwcid="loginForm">
+
+	<table cellspacing="0" border="0" style="margin-left: auto; margin-right: auto; width: 100%;">
+	<tr>
+	<td
+        style="background-color: #0A2D43;width:70px;padding-left:20px;">
+        <span jwcid="@Image" image="ognl:logoImage" width="50" height="99" border="0"/>
+    </td>
+	<td style="width: 10em;text-align: center;padding: 20px;padding-left: 0px;background-color: #0A2D43;"> 
+		<a class="researcherMainLink" href="http://researcher.sf.net">Re-searcher</a>
+		<span class="mainSmall"> developed at </span> <br/> <a href="http://www.ibt.lt/bioinformatics/" class="ibtMainLink">Institute of Biotechnology,<br/>Vilnius, Lithuania</a>
+	</td>
+	<td style="padding: 14px;background-color: #0A2D43;">
+		&nbsp;
+	</td>
+	</table>
+
+	<span jwcid="@If" condition="ognl:delegate.hasErrors">
+		<div class="error-box" style="text-align: center;"> 
+			<span jwcid="errors"/>
+		</div> 
+	</span>
+	
+	<span jwcid="@Else">
+		<div style="height: 100px;"> &nbsp; </div>
+	</span>
+	 	  
+    <table class="form-box" cellspacing="0" cellpadding="0">
+	<tr>
+		<td colspan="2" style="height: 10px;"> </td>
+	</tr>    
+      <tr>
+      <td style="text-align: right">		      		
+         <span jwcid="@Insert" value="message:username"/>
+      </td>
+      <td>		      
+         <input style="width: 180px;" class="text-input" jwcid="username"/>
+      </td>      
+      </tr>	
+      <tr>
+      <td style="text-align: right">		      
+         <span jwcid="@Insert" value="message:password"/>
+      </td>
+      <td>
+	     <input style="width: 180px;" class="text-input" jwcid="password" />
+      </td>      
+      </tr>		                   
+      <tr>
+		<td colspan="2" style="height: 10px;"> </td>
+      </tr>
+      <tr>
+		<td style="text-align: right" colspan="2">
+        <span jwcid="@If" condition="ognl:allowRegistration"> 			        
+         	<span jwcid="@PageLink" page="NewUser" class="newUserLink"> <span jwcid="@Insert" value="message:newUser"/> </span>
+        </span>         	
+        &nbsp; 	
+        &nbsp;
+        &nbsp;
+    	<input jwcid="@Submit" class="button" action="listener:onLogin" value="message:login" type="submit" />
+      </td>
+      </tr>
+
+	  </table>
+
+</form>           
+
+</body>
+</html>
+

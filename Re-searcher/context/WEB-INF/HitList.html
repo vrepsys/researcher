@@ -1,0 +1,107 @@
+<span jwcid="@Border">
+<form jwcid="@Form">
+<table class="form-box" cellspacing="0" cellpadding="0">
+	<tr>
+		<td class="title"> 
+			<span jwcid="@Insert" value="message:querySequenceName" /> 
+		</td>
+		<td> 
+			<span jwcid="@Insert" value="ognl:query.sequenceName"/> 
+		</td>
+	</tr>
+	<tr>
+		<td class="title"> 
+			<span jwcid="@Insert" value="message:QueryDetails" /> 
+		</td>
+		<td> 			
+	    	<a jwcid="@DirectLink" listener="listener:onClickView" parameters="ognl:query.id">
+				<span jwcid="@Insert" value="ognl:query.shortDetails"/>				
+				<span jwcid="@If" condition="ognl:query.blastErrors != null">
+					<span class="error-text" style="white-space: nowrap;">
+						<span jwcid="@Insert" value="message:error"/>
+					</span>					
+				</span>
+	   		</a>
+		</td>
+	</tr>	
+	
+
+	
+	<tr>
+		<td class="title"> 
+			<span jwcid="@Insert" value="message:numberOfHits" /> 
+		</td>
+		<td> 
+			<span jwcid="@Insert" value="ognl:query.numberOfHits"/> 
+		</td>
+	</tr>
+	<tr>
+		<td class="title"> 
+			<span jwcid="@Insert" value="message:numberOfNewHits" /> 
+		</td>
+		<td> 
+			<span jwcid="@Insert" value="ognl:query.numberOfNewHits"/> 
+		</td>
+	</tr>	
+	<tr>
+		<td class="title"> Hit Date</td> 
+		<td> From <span jwcid="@DatePicker" value="ognl:fromDate"/> Till <span jwcid="@DatePicker" value="ognl:tillDate"/></td> 
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: right">
+			<span jwcid="@If" condition="ognl:query.numberOfNewHits > 0">
+			    <a jwcid="@DirectLink" listener="listener:onClickFastaListNew"><span jwcid="@Insert" value="message:viewNewSeq"/></a>
+			</span>
+			&nbsp;
+    		<a jwcid="@DirectLink" listener="listener:onClickFastaList"><span jwcid="@Insert" value="message:viewAllSeq"/></a>
+    		&nbsp;
+			<a jwcid="@DirectLink" listener="listener:onClickMarkAsRead"><span jwcid="@Insert" value="message:MarkAsRead"/></a> 
+			&nbsp;
+			<input jwcid="@Submit" class="button" value="message:submit" style="width: 5em; margin:5px;"/>
+		</td>
+	</tr>
+	</table>
+</form>
+<br/>
+<table     
+    jwcid="table@contrib:Table"
+    source="ognl:hits"
+    columns="SubjectId, SubjectDef, Evalue, HitDate, Alignment:HitDate:" 
+    pageSize="100"
+    class="data_table"
+    cellspacing="0" cellpadding="0"
+  	row="ognl:row"
+	rowsClass="ognl:row.isUnseen() == true ? 'new_results' : null"
+	initialSortColumn="Evalue"
+	initialSortOrder="false"
+    >
+   
+   <span jwcid="SubjectDefColumnValue@Block">
+			<span jwcid="@InsertNbsp" value="ognl:components.table.tableRow.SubjectDef"/>
+   </span> 
+    
+   <span jwcid="EvalueColumnValue@Block">
+			<span jwcid="@Insert" 
+			      format="ognl:@researcher.utils.Formatter@getEvalueFormat()"
+			      value="ognl:components.table.tableRow.Evalue"/>
+   </span> 
+    
+   <span jwcid="SubjectIdColumnValue@Block">
+	   	<a jwcid="@DirectLink" listener="listener:onClickSequenceName" parameters="ognl:components.table.tableRow.id">
+			<span jwcid="@InsertNbsp" value="ognl:components.table.tableRow.subjectId"/>
+	    </a>	
+   </span> 
+
+   <span jwcid="HitDateColumnValue@Block">
+      <span jwcid="@Insert" value="ognl:@researcher.utils.Formatter@formatDate(row.HitDate)"/>
+   </span>
+
+   <span jwcid="AlignmentColumnValue@Block">
+	   	<a jwcid="@DirectLink" listener="listener:onClickAlignment" parameters="ognl:components.table.tableRow.id">
+			<span jwcid="@Insert" value="message:alignment"/>
+	    </a>	
+   </span>   
+    
+</table>
+
+</span>

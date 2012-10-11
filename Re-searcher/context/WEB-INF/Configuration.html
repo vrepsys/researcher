@@ -1,0 +1,212 @@
+<span jwcid="@Border">
+<form jwcid="parametersForm">
+<span jwcid="errors"/>
+<table style="border:0; margin-left: auto; margin-right: auto;">
+<tr><td style=""> <span jwcid="@Insert" value="message:systemConfiguration"/> </td></tr>
+<tr><td>
+<table class="form-box">
+		<tr>
+		<td colspan="2" class="title"> 
+			<span jwcid="@Insert" value="message:psiblastOpts"/> 
+			<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+				link="/Researcher/static_pages/config_help.html#psiblastOptsHelp" 
+				text="message:psiblastOptsHelp"/>
+		</td>
+		</tr>
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:blastHostname"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="blastHostname" style="width: 20em;"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:blastUsername"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="blastUsername" style="width: 20em;"/>
+			</td>
+		</tr>	
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:blastPassword"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="blastPassword" style="width: 20em;"/>
+			</td>
+		</tr>		
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:pathToPrivateKey"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="pathToPrivateKey" style="width: 20em;"/>
+			</td>
+		</tr>	
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:passphrase"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="passphrase" style="width: 20em;"/>
+			</td>
+		</tr>				
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:psiBlastCommand"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="psiBlastCommand" style="width: 20em;"/>
+			</td>
+		</tr>						
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:fastaCmdCommand"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="fastaCmdCommand" style="width: 20em;"/>
+			</td>
+		</tr>						
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:pathToTmp"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="pathToTmp" style="width: 20em;"/>
+			</td>
+		</tr>	
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:processorsToUse"/>
+			</td>
+			<td>
+				<input type="text" class="text-input" jwcid="processorsToUse" style="width: 20em;"/>
+			</td>
+		</tr>								
+		<tr>
+		<td colspan="2" class="title"> 
+			<span jwcid="@Insert" value="message:emailOpts"/>
+            <span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+				link="/Researcher/static_pages/config_help.html#emailOptsHelp" 
+				text="message:emailOptsHelp"/>
+		</td>
+		</tr>			
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:smtpHostname"/>
+			</td>
+			<td>
+				<input jwcid="smtpHostname@TextField"
+		               value="ognl:smtpHostname" 
+				       type="text" 
+				       class="text-input"  
+				       style="width: 20em;"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:emailFrom"/>
+			</td>
+			<td>
+				<input jwcid="emailFrom@TextField"
+		               value="ognl:emailFrom" 
+				       type="text" 
+				       class="text-input"  
+				       style="width: 20em;"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:applicationLink"/>
+			</td>
+			<td>
+				<input jwcid="applicationLink@TextField"
+		               value="ognl:applicationLink" 
+				       type="text" 
+				       class="text-input"  
+				       style="width: 20em;"/>
+			</td>
+		</tr>	
+		<tr>
+		<td colspan="2" class="title"> 
+			<span jwcid="@Insert" value="message:otherOpts"/>
+			<span jwcid="@HelpBox" style="background-color: #c4dbef;" 
+				link="/Researcher/static_pages/config_help.html#otherOptsHelp" 
+				text="message:otherOptsHelp"/>
+		</td>
+		</tr>						
+		<tr>
+			<td>
+				<span jwcid="@Insert" value="message:allowRegistration"/>
+			</td>
+			<td>
+				<input jwcid="@Checkbox"
+		               value="ognl:allowRegistration" />
+			</td>
+		</tr>			
+		<tr>
+			<td>&nbsp;</td>
+			<td style="text-align: right;">
+				<input jwcid="@Submit" class="button" value="message:save" style="width: 5em;margin:5px;"/>
+			</td>
+		</tr>
+</table>
+</td></tr>
+</table>
+</form>
+
+<br/>
+
+<table style="margin-left: auto; margin-right: auto;">
+<tr>
+	<td> 
+		<span jwcid="@Insert" value="message:AddNewDatabase"/> 
+		<span jwcid="@HelpBox" style="background-color: white;" 
+			link="/Researcher/static_pages/config_help.html#AddNewDatabaseHelp" 
+			text="message:AddNewDatabaseHelp"/>
+	</td> 
+	<td style="padding-left: 30px;"> <span jwcid="@Insert" value="message:DatabaseList"/> </td>
+</tr>
+<tr>
+  <td style="vertical-align: top;">  
+	<form jwcid="form">	
+		<table class="form-box">
+			<tr>
+				<td> <span jwcid="@Insert" value="message:Name"/> </td>
+				<td> <input jwcid="databaseName" class="text-input" style="width: 15em"/> </td>
+			</tr>
+			<tr>
+				<td> <span jwcid="@Insert" value="message:Path"/> </td>
+				<td> <input jwcid="databasePath" class="text-input" style="width: 15em"/> </td>
+			</tr>
+			<tr>
+			<td colspan="2" style="text-align: right;">
+				<input jwcid="@Submit" class="button" value="message:Add" style="width: 5em;margin:5px;"/>
+			</td>
+			</tr>
+		</table>
+	</form>
+  </td>
+  <td style="vertical-align: top;padding-left: 30px;">
+  
+		<table     
+	    jwcid="table@contrib:Table"
+	    source="ognl:blastDatabases"
+	    columns="Name, Path, Delete:Delete:" 
+	    pageSize="-1"
+	    class="data_table"
+	    cellspacing="0" cellpadding="0"
+		initialSortColumn="Name">	
+		
+	    <span jwcid="DeleteColumnValue@Block">
+	    	<a jwcid="@DirectLink" listener="listener:onClickDelete" parameters="ognl:components.table.tableRow.id">
+				<span jwcid="@Insert" value="message:Delete"/>
+	    	</a>	    	
+		</span>		
+		
+	</table>
+  </td>
+</table>
+</span>

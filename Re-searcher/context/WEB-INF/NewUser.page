@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+  
+  
+<page-specification>
+
+	<component id="form" type="Form">
+   		<binding name="listener" value="listener:onOk"/>
+	    <binding name="clientValidationEnabled" value="true"/>
+		<binding name="delegate" value="beans.delegate"/>	    
+	</component>
+	
+	<component id="username" type="TextField">
+   		<binding name="value" value="ognl:username"/>
+   		<binding name="validators" value="validators:required"/>
+   		<binding name="displayName" value="literal:username"/>
+	</component>
+	
+	<component id="password" type="TextField">
+   		<binding name="value" value="password"/>
+   		<binding name="validators" value="validators:required"/>   	
+		<binding name="displayName" value="literal:password"/>
+	    <binding name="hidden" value="true"/>
+	</component>	
+	
+	<component id="email" type="TextField">
+   		<binding name="value" value="email"/>
+   		<binding name="validators" value="validators:required"/>   		
+   		<binding name="displayName" value="literal:email"/>
+	</component>
+		
+	<component id="errors" type="Delegator">
+   		<binding name="delegate" value="beans.delegate.firstError"/>   		
+	</component>
+	
+	<component id="admin" type="Checkbox">
+   		<binding name="value" value="admin"/>
+	</component>
+
+</page-specification>

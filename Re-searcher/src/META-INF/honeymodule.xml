@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<module id="honey" version="1.0.0" package="researcher.db.service">
+	
+	Defines hibernate session factory and persistence service for the Re-Searcher Application.
+	
+  <service-point id="ResearcherPersistenceService" interface="ResearcherPersistenceService">
+	<invoke-factory>
+		<construct class="ResearcherPersistenceServiceImpl"/>
+  	</invoke-factory>
+    <interceptor service-id="hivemind.LoggingInterceptor"/>
+  </service-point> 
+  
+  <configuration-point id="SessionFactoryProvider" schema-id="honeycomb.hibernate.HibernateSessionFactory"/>
+
+  <service-point id="SessionFactoryProvider" interface="com.javaforge.honeycomb.hivemind.hibernate.ISessionFactoryProvider">
+    	<invoke-factory model="singleton">
+ 		<construct class="com.javaforge.honeycomb.hivemind.hibernate.SessionFactoryProvider"
+					initialize-method="init">
+			 <configuration>SessionFactoryProvider</configuration>
+		</construct>  		  		
+  	</invoke-factory> 
+  </service-point>
+
+  <contribution configuration-id="SessionFactoryProvider">
+	    <config-xml name="/hibernate.cfg.xml"/>	  
+  </contribution>
+  
+  <service-point id="HibernateSessionFactory" 
+                 interface="org.apache.hivemind.ServiceImplementationFactory" parameters-occurs="none">
+  	<invoke-factory model="singleton">
+ 		<construct class="com.javaforge.honeycomb.hivemind.hibernate.HibernateSessionFactory">
+			 <set-service property="sessionFactoryProvider" service-id="SessionFactoryProvider"/>
+ 			 <set property="transactionManager" value="false" />
+		</construct>  		  		
+  	</invoke-factory> 
+  	<interceptor service-id="hivemind.LoggingInterceptor"/>
+  </service-point>
+  
+  <service-point id="HibernateSession" interface="org.hibernate.Session">
+	  The hibernate Sesssion. Change the model to "threaded" to switch to session-per-request pattern
+  		<invoke-factory service-id="HibernateSessionFactory" model="threaded" /> 
+  		<interceptor service-id="hivemind.LoggingInterceptor"/> 			
+  </service-point>
+  
+</module>
